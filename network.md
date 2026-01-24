@@ -31,10 +31,6 @@ story:
     The Diode Network is the world’s most advanced Smart Network. It is an open-source web3 communications network that combines the highest security with the best accessibility. And it’s available off-the-shelf as a service to the world.
   
     We believe the Diode Network is the beginning of great things for the future of the Internet.
-  buttons:
-  - title: See how teams are using Diode
-    class: btn--blank btn--arrow
-    url: "/usecases/"
   image:
     src: story/network-full.webp
     alt: Network

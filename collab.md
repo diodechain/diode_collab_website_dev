@@ -32,10 +32,6 @@ story:
     Diode Collab&trade; creates secure tunnels between your team members in a "security perimeter" (a Zone).  Each Zone has built-in chat, file, and web browsing capabilities. It is a decentralized “local first” solution that doesn’t rely on third party servers - your team will be operating in one of the most protected environments possible.
   
     The Diode Network&trade; ensures that not even Diode has access to your team’s communications, information, or activity.
-  buttons:
-  - title: See how teams are using Diode
-    class: btn--blank btn--arrow
-    url: "/usecases/"
   image:
     src: story/app-full.webp
     alt: App

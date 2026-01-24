@@ -29,10 +29,6 @@ story:
     The Diode CLI makes your IT, OT, or IoT assets both smart and secure. Every CLI-enabled asset is globally accessible to authorized parties and is 256-bit E2EE secured.
   
     The open source CLI uses less resources than a VPN, requires no managed server infrastructure (VPN cloud), and is more secure - it brings the power of the Diode Network to your edge devices.
-  buttons:
-  - title: See how teams are using Diode
-    class: btn--blank btn--arrow
-    url: "/usecases/"
   image:
     src: story/cli-full.webp
     alt: Diode CLI

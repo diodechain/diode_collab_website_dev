@@ -57,7 +57,7 @@ People use Diode Collab for many reasons, whether it's a personal preference for
 
 **Diode Collab:**
 
-*   **Team Workspaces:** Zones, channels, and direct chats can be created for projects, client accounts, or internal resources. Great for [teams](https://diode.io/usecases/) and support desks!
+*   **Team Workspaces:** Zones, channels, and direct chats can be created for projects, client accounts, or internal resources. Great for teams and support desks!
 *   **Access From Anywhere [Without VPN](https://diode.io/blog/does-vpn-protect-my-information):** Ideal for [traveling executives](https://diode.io/blog/strategies-for-executive-protection) or [remote/distributed teams](https://diode.io/blog/replacing-VPN-for-international-teams). Operate securely from any location without exposing your traffic to third parties while maintaining access to tools with [ZTN's regional tunneling](https://app.docs.diode.io/docs/features/regional-tunnels/).
 *   **Built-In Tools:** Built-in [chat](https://app.docs.diode.io/docs/using/create-a-group-chat/), files, wikis, and [share links](https://app.docs.diode.io/docs/using/share-a-file-or-folder-via-web-browser/) all under the same encrypted roof.
 *   **Secure Storage and Sharing:** Personal data never passes through centralized server and everything is [end-to-end encrypted](https://app.docs.diode.io/docs/using/how-it-works/).
