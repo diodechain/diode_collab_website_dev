@@ -1,0 +1,59 @@
+{%- assign hero = page.collab_a_hero | default: page.hero -%}
+{%- assign nav_links = page.collab_a_nav | default: site.collab_a_nav | default: nil -%}
+{%- assign footer = page.collab_a_footer | default: site.collab_a_footer | default: nil -%}
+
+{%- comment -%} Decorative background assets (wrapped so markdown doesn't add &lt;p&gt;) {%- endcomment -%}
+<div class="collab-a-bg" aria-hidden="true">
+<img src="{{ 'collab-a/collab-a-mask-group.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-mask-group" />
+<img src="{{ 'collab-a/collab-a-img1.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img1" />
+<img src="{{ 'collab-a/collab-a-img2.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img2" />
+<object data="{{ 'collab-a/collab-a-graphic1.svg' | prepend: site.path.images | relative_url }}" class="collab-a-graphic1" type="image/svg+xml"></object>
+</div>
+
+<div class="collab-a-row1">
+	<div class="collab-a-layer">
+		<object data="{{ 'collab-a/collab-a-graphic2.svg' | prepend: site.path.images | relative_url }}" class="collab-a-graphic2" type="image/svg+xml" aria-hidden="true"></object>
+		<div class="collab-a-line-top"></div>
+		<img src="{{ 'collab-a/collab-a-mobile-chat.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img collab-a-mobile-chat" />
+	</div>
+
+	<div class="collab-a-col-right">
+		<h1 class="collab-a-title">{{ hero.heading | default: hero.title | default: "Private Team Collaboration" }}</h1>
+		<div class="collab-a-subtitle">
+			{{ hero.subheading | default: hero.subtitle | default: "**Team messaging.  Organized files.  VPN.**
+
+No data, accounts, or PII on a server.
+
+Everything your team needs to stay connected privately, no matter where they are in the world." | markdownify }}
+		</div>
+		<a href="{{ hero.btn_url | default: '#download-app' }}" class="collab-a-btn-download popup-open">{{ hero.btn_download | default: "DOWNLOAD" }}</a>
+		<div class="collab-a-line"></div>
+		<img src="{{ 'collab-a/collab-a-img3.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img collab-a-img3" />
+	</div>
+</div>
+
+<div class="collab-a-row2">
+	{%- if nav_links -%}
+		{%- for link in nav_links -%}
+			<p class="collab-a-text-a"><a href="{{ link.url | relative_url }}">{{ link.label }}</a></p>
+		{%- endfor -%}
+	{%- else -%}
+		<p class="collab-a-text-a"><a href="{{ '/pricing/' | relative_url }}">Pricing</a></p>
+		<p class="collab-a-text-a"><a href="https://docs.diode.io" target="_blank" rel="noopener">Docs</a></p>
+		<p class="collab-a-text-a"><a href="{{ '/blog/' | relative_url }}">Stories</a></p>
+		<p class="collab-a-text-a"><a href="{{ '/support.html' | relative_url }}">Support</a></p>
+		<p class="collab-a-text-a"><a href="{{ '/about/' | relative_url }}">More about Diode</a></p>
+	{%- endif -%}
+</div>
+
+<div class="collab-a-row-bottom">
+	{%- if footer -%}
+		<p class="collab-a-text-b">{{ footer.line1 | default: footer }}</p>
+		<p class="collab-a-text-b">{{ footer.line2 }}</p>
+	{%- else -%}
+		<p class="collab-a-text-b">
+			DIODE © {{ site.time | date: "%Y" }}, All Rights Reserved | <a href="{{ '/terms/' | relative_url }}">Terms</a> | <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
+		</p>
+		<p class="collab-a-text-b">ISO 27001, SOC-2, GDPR, HIPAA, etc.</p>
+	{%- endif -%}
+</div>

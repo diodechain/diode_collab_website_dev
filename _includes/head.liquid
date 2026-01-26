@@ -9,6 +9,9 @@
 
     <!-- Stylesheet -->
     <link href="{{ "style.css" | prepend: site.path.styles | relative_url }}" rel="stylesheet">
+    {%- if page.layout == 'page-collab-a' -%}
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+    {%- endif -%}
 
     <!-- Javascript -->
     <script src="{{ "swiper.js" | prepend: site.path.scripts | relative_url }}" defer></script>

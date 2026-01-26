@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+
+{%- include head.liquid -%}
+
+<body class="page--collab-a">
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59C3BGK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<div class="collab-a">
+		<a href="{{ '/' | relative_url }}" class="collab-a-header" aria-label="Diode home">
+			<object data="{{ 'collab-a/collab-a-component.svg' | prepend: site.path.images | relative_url }}" class="collab-a-component" type="image/svg+xml" width="23" height="18">Diode</object>
+		</a>
+		{{ content }}
+	</div>
+
+	{%- include download-popup.liquid id="download-app" -%}
+	{%- include cookies-consent.liquid id="cookies-consent" -%}
+
+</body>
+</html>
