@@ -94,15 +94,11 @@ function initPopup() {
   }
 
   function showPopup(target) {
+    if (!target) return false;
     target.classList.add('visible');
     setTimeout(function () {
       target.classList.add('open');
     }, 25);
-    setTimeout(function () {
-      if (isNavbar) {
-        document.body.classList.add('menu-open');
-      }
-    }, 300);
     return false;
   }
 
@@ -152,20 +148,26 @@ function initPopup() {
 
   var navbar = document.querySelector('.header__nav'),
     toggle = document.querySelector('.header__toggle'),
-    close = navbar.querySelector('.header__close');
+    close = navbar ? navbar.querySelector('.header__close') : null;
 
-  toggle.area = navbar;
-  toggle.navbar = true;
-  toggle.addEventListener('click', togglePopup, false);
+  if (toggle && navbar) {
+    toggle.area = navbar;
+    toggle.navbar = true;
+    toggle.addEventListener('click', togglePopup, false);
+  }
 
-  close.area = navbar;
-  close.navbar = true;
-  close.addEventListener('click', togglePopup, false);
+  if (close && navbar) {
+    close.area = navbar;
+    close.navbar = true;
+    close.addEventListener('click', togglePopup, false);
+  }
 
   document.querySelectorAll('.close-nav').forEach((link) => {
-    link.area = navbar;
-    link.addEventListener('click', togglePopup, false);
-    link.navbar = true;
+    if (navbar) {
+      link.area = navbar;
+      link.addEventListener('click', togglePopup, false);
+      link.navbar = true;
+    }
   });
 
   document.querySelectorAll('.popup-open').forEach((link) => {
@@ -191,13 +193,20 @@ function initPopup() {
 
   let c = getCookie('Consent_Status');
   if (!c) {
-    document.querySelectorAll('.cookies-consent').forEach((consent) => {
-      consent.querySelector('.cookie-accept').addEventListener('click', acceptConsent, false);
-      consent.querySelector('.cookie-reject').addEventListener('click', rejectConsent, false);
-    });
+    // Wait a bit to ensure DOM is fully ready
+    setTimeout(function() {
+      document.querySelectorAll('.cookies-consent').forEach((consent) => {
+        const acceptBtn = consent.querySelector('.cookie-accept');
+        const rejectBtn = consent.querySelector('.cookie-reject');
+        if (acceptBtn) acceptBtn.addEventListener('click', acceptConsent, false);
+        if (rejectBtn) rejectBtn.addEventListener('click', rejectConsent, false);
+      });
 
-    let t = document.querySelector('#cookies-consent');
-    showPopup(t);
+      let t = document.querySelector('#cookies-consent');
+      if (t) {
+        showPopup(t);
+      }
+    }, 100);
   }
 }
 

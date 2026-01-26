@@ -4,17 +4,15 @@
 
 {%- comment -%} Decorative background assets (wrapped so markdown doesn't add &lt;p&gt;) {%- endcomment -%}
 <div class="collab-a-bg" aria-hidden="true">
-<img src="{{ 'collab-a/collab-a-mask-group.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-mask-group" />
-<img src="{{ 'collab-a/collab-a-img1.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img1" />
+<img src="{{ 'collab-a/diode-mesh.png' | prepend: site.path.images | relative_url }}" alt="" class="diode-mesh" />
 <img src="{{ 'collab-a/collab-a-img2.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img2" />
-<object data="{{ 'collab-a/collab-a-graphic1.svg' | prepend: site.path.images | relative_url }}" class="collab-a-graphic1" type="image/svg+xml"></object>
 </div>
 
 <div class="collab-a-row1">
 	<div class="collab-a-layer">
-		<object data="{{ 'collab-a/collab-a-graphic2.svg' | prepend: site.path.images | relative_url }}" class="collab-a-graphic2" type="image/svg+xml" aria-hidden="true"></object>
+		<object data="{{ 'collab-a/phone-outline.svg' | prepend: site.path.images | relative_url }}" class="collab-a-graphic2" type="image/svg+xml" aria-hidden="true"></object>
 		<div class="collab-a-line-top"></div>
-		<img src="{{ 'collab-a/collab-a-mobile-chat.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img collab-a-mobile-chat" />
+		<img src="{{ 'collab-a/phone-screen.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img collab-a-mobile-chat" />
 	</div>
 
 	<div class="collab-a-col-right">
@@ -28,32 +26,38 @@ Everything your team needs to stay connected privately, no matter where they are
 		</div>
 		<a href="{{ hero.btn_url | default: '#download-app' }}" class="collab-a-btn-download popup-open">{{ hero.btn_download | default: "DOWNLOAD" }}</a>
 		<div class="collab-a-line"></div>
-		<img src="{{ 'collab-a/collab-a-img3.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img collab-a-img3" />
+		<div class="collab-a-store-badges">
+			<img src="{{ 'collab-a/playstore-badge.png' | prepend: site.path.images | relative_url }}" alt="Get it on Google Play" class="collab-a-img collab-a-playstore-badge" />
+			<img src="{{ 'collab-a/appstore-badge.png' | prepend: site.path.images | relative_url }}" alt="Download on the App Store" class="collab-a-img collab-a-appstore-badge" />
+		</div>
 	</div>
 </div>
 
-<div class="collab-a-row2">
-	{%- if nav_links -%}
-		{%- for link in nav_links -%}
-			<p class="collab-a-text-a"><a href="{{ link.url | relative_url }}">{{ link.label }}</a></p>
-		{%- endfor -%}
-	{%- else -%}
-		<p class="collab-a-text-a"><a href="{{ '/pricing/' | relative_url }}">Pricing</a></p>
-		<p class="collab-a-text-a"><a href="https://docs.diode.io" target="_blank" rel="noopener">Docs</a></p>
-		<p class="collab-a-text-a"><a href="{{ '/blog/' | relative_url }}">Stories</a></p>
-		<p class="collab-a-text-a"><a href="{{ '/support.html' | relative_url }}">Support</a></p>
-		<p class="collab-a-text-a"><a href="{{ '/about/' | relative_url }}">More about Diode</a></p>
-	{%- endif -%}
+<div class="footer-menu">
+	<div class="home-page-menu">
+		{%- if nav_links -%}
+			{%- for link in nav_links -%}
+				<p class="collab-a-text-a"><a href="{{ link.url | relative_url }}">{{ link.label }}</a></p>
+			{%- endfor -%}
+		{%- else -%}
+			<p class="collab-a-text-a"><a href="{{ '/pricing/' | relative_url }}">Pricing</a></p>
+			<p class="collab-a-text-a"><a href="https://docs.diode.io" target="_blank" rel="noopener">Docs</a></p>
+			<p class="collab-a-text-a"><a href="{{ '/blog/' | relative_url }}">Stories</a></p>
+			<p class="collab-a-text-a"><a href="{{ '/support.html' | relative_url }}">Support</a></p>
+			<p class="collab-a-text-a"><a href="{{ '/about/' | relative_url }}">More about Diode</a></p>
+		{%- endif -%}
+	</div>
+	<object data="{{ 'collab-a/social-icons.svg' | prepend: site.path.images | relative_url }}" class="collab-a-social-icons" type="image/svg+xml"></object>
 </div>
 
-<div class="collab-a-row-bottom">
+<div class="footer-credits">
 	{%- if footer -%}
-		<p class="collab-a-text-b">{{ footer.line1 | default: footer }}</p>
-		<p class="collab-a-text-b">{{ footer.line2 }}</p>
+		<p class="reserved-blurb">{{ footer.line1 | default: footer }}</p>
+		<p class="compliance-blurb">{{ footer.line2 }}</p>
 	{%- else -%}
-		<p class="collab-a-text-b">
+		<p class="reserved-blurb">
 			DIODE © {{ site.time | date: "%Y" }}, All Rights Reserved | <a href="{{ '/terms/' | relative_url }}">Terms</a> | <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
 		</p>
-		<p class="collab-a-text-b">ISO 27001, SOC-2, GDPR, HIPAA, etc.</p>
+		<p class="compliance-blurb">ISO 27001, SOC-2, GDPR, HIPAA, etc.</p>
 	{%- endif -%}
 </div>
