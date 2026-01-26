@@ -10,9 +10,20 @@
 	<!-- End Google Tag Manager (noscript) -->
 
 	<div class="collab-a">
-		<a href="{{ '/' | relative_url }}" class="collab-a-header" aria-label="Diode home">
-			<object data="{{ 'collab-a/collab-a-component.svg' | prepend: site.path.images | relative_url }}" class="collab-a-component" type="image/svg+xml" width="23" height="18">Diode</object>
-		</a>
+		{%- if site.nav -%}
+			<div id="menu" class="header__nav">
+				<div class="header__space">
+					<div class="container">
+						{%- include parts/logo.liquid class="header__logo" -%}
+						{%- include parts/nav.liquid class="header__menu" -%}
+						{%- include parts/social.liquid -%}
+						{%- include parts/copyright.liquid -%}
+						<a href="#close" class="header__close" aria-label="Hide navigation"></a>
+					</div>
+				</div>
+			</div>
+			<a href="#menu" class="collab-a-header header__toggle" aria-label="Show navigation"><span></span></a>
+		{%- endif -%}
 		{{ content }}
 	</div>
 

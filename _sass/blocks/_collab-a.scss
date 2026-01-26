@@ -35,16 +35,48 @@ body.page--collab-a {
   min-height: 750px;
   flex: 1;
   box-sizing: border-box;
+
+  a {
+    cursor: pointer;
+  }
 }
 
 .collab-a-header {
-  width: 23px;
-  height: 18px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 51.1px;
+  right: 42px;
+  z-index: 3;
+  cursor: pointer;
   flex-shrink: 0;
   align-self: flex-end;
   display: block;
   text-decoration: none;
   color: inherit;
+
+  &::before, &::after, span {
+    content: '';
+    width: 23px;
+    height: 2px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: none;
+    transform-origin: center;
+  }
+  &::before {
+    top: 16px;
+  }
+  &::after {
+    bottom: 16px;
+  }
 }
 
 .collab-a-img {
