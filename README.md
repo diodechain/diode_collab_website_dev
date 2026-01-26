@@ -1,4 +1,4 @@
-# Diode Setups:
+# Diode Setup:
 ## System Preparation
 1. Follow guides [here](http://jekyllrb.com/docs/installation/) to install ruby for your OS
 2. Install Jekyll & Bundler: `gem install jekyll bundler`
