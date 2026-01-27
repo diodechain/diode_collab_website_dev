@@ -8,7 +8,7 @@ redirect_from:
 collab_a_hero:
   heading: Private Team Collaboration
   subheading: |
-    **Team messaging.  Organized files.  VPN.**
+    **Messaging.  Drive.  VPN.**
 
     No data, accounts, or PII on a server.
 
