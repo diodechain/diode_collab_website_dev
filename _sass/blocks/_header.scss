@@ -27,21 +27,14 @@
 
   &__logo {
     position: absolute;
-    top: 25px;
-    left: 17px;
+    top: 46.2px;
+    left: 54.6px;
     z-index: 5;
-    @include media-breakpoint-up(xss) {
-      left: 27px;
-    }
-    @include media-breakpoint-up(sm) {
-      left: 17px;
-    }
     @include media-breakpoint-up(xl) {
-      top: 68px;
+      left: calc((100% - 1140px) / 2 + 15px);
     }
     @include media-breakpoint-up(xxl) {
-      margin-left: -632px;
-      left: 50%;
+      left: calc((100% - 1300px) / 2 + 15px);
     }
 
     a {
@@ -50,10 +43,19 @@
     }
 
     img {
-      width: 129px;
-      height: 42px;
+      width: 255.5px;
+      height: auto;
+      max-width: 255.5px;
       display: block;
       @include user-select;
+      object-fit: contain;
+    }
+    
+    // Orange logo in hamburger menu
+    .header__space & img {
+      width: 270px;
+      height: auto;
+      max-height: 47.25px;
     }
   }
 
@@ -61,28 +63,19 @@
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 25px;
-    right: 15px;
+    top: 51.1px;
+    right: 42px;
     z-index: 3;
     cursor: pointer;
-    @include media-breakpoint-up(xss) {
-      right: 25px;
-    }
-    @include media-breakpoint-up(sm) {
-      right: 15px;
-    }
-    @include media-breakpoint-up(md) {
-      right: 5px;
-    }
     @include media-breakpoint-up(xl) {
-      top: 62px;
+      right: calc((100% - 1140px) / 2 + 15px);
     }
     @include media-breakpoint-up(xxl) {
-      right: 52px;
+      right: calc((100% - 1300px) / 2 + 15px);
     }
 
     &::before, &::after, span {
-      @include pseudo;
+      content: '';
       width: 23px;
       height: 2px;
       margin: auto;
@@ -92,8 +85,8 @@
       bottom: 0;
       left: 0;
       z-index: 1;
-      background: black;
-      transition: transform $effect, opacity $effect;
+      background: white;
+      transition: transform 0.3s ease, opacity 0.3s ease;
       transform: none;
       transform-origin: center;
     }
@@ -150,17 +143,52 @@
       padding-left: 10px;
     }
 
-    // Logo
+    // Top bar with logo and close button
     & > .container {
+      padding-top: 40px;
+      
+      .header__top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      
       .header__menu {
         z-index: 0;
       }
       .header__logo {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 0;
         @include media-breakpoint-up(xss) {
           @include media-breakpoint-down(md) {
-            left: 17px;
+            left: 0;
+            margin-left: 0;
           }
         }
+      }
+      
+      // Override color for blurbs in hamburger menu (base styles inherited from _collab-a.scss)
+      .reserved-blurb,
+      .compliance-blurb {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 15px;
+        margin-bottom: 0;
+        min-height: auto;
+        color: #000 !important;
+        position: relative;
+        z-index: 3;
+        
+        a {
+          color: #000 !important;
+        }
+      }
+      
+      .compliance-blurb {
+        margin-top: 5px;
       }
     }
 
@@ -184,17 +212,12 @@
       column-count: 2;
     }
     @include media-breakpoint-up(md) {
-      max-width: 640px;
-      padding-top: 140px;
+      padding-top: 100px;
       font-size: 45px;
       line-height: 47px;
     }
-    @include media-breakpoint-up(lg) {
-      max-width: 800px;
-    }
     @include media-breakpoint-up(xl) {
-      max-width: 997px;
-      padding-top: 175px;
+      padding-top: 100px;
       font-size: 45px;
       line-height: 47px;
     }
@@ -318,25 +341,27 @@
       }
     }
   }
-
+  
   &__close {
     width: 40px;
     height: 40px;
-    margin: auto;
+    margin: 0;
     display: block;
-    position: absolute;
-    top: 25px;
-    right: 14px;
+    position: relative;
+    top: 0;
+    right: 0;
     z-index: 10;
     cursor: pointer;
-    @include media-breakpoint-up(xss) {
-      right: 15px;
+    flex-shrink: 0;
+    
+    // When inside top-bar, remove absolute positioning
+    .header__top-bar & {
+      position: relative;
+      top: 0;
+      right: 0;
     }
-    @include media-breakpoint-up(md) {
-      right: 5px;
-    }
+    
     @include media-breakpoint-up(xl) {
-      top: 62px;
     }
     @include media-breakpoint-up(xxl) {
       right: 52px;

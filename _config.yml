@@ -29,34 +29,17 @@ path:
 
 # Navigation
 nav:
-- title: Products
-  url: "/products/"
-  sub:
-  - title: Diode Collab
-    url: "/products/collab/"
-  - title: CLI
-    url: "/products/cli/"
-  - title: Vault
-    url: "/products/vault/"
-  - title: Network
-    url: "/products/network/"
+- title: Pricing
+  url: "/pricing/"
+- title: Stories
+  url: "/blog/"
 - title: Docs
   url: "https://docs.diode.io/"
   target: _blank
-- title: Pricing
-  url: "/pricing/" 
-- title: About Us
+- title: Support
+  url: "/support.html"
+- title: Learn More
   url: "/about/"
-  sub:
-  - title: Download
-    url: "/download/"
-  - title: How it works
-    url: "/how-it-works/"
-  - title: Explore the network
-    url: "https://diodenetwork.io"
-    target: _blank
-  - title: Blog
-    url: "/blog/"
 
 # Other Links
 links:

@@ -1,3 +1,20 @@
+{%- comment -%} Use orange logo in hamburger menu (header__space), white logo in header, regular logo elsewhere {%- endcomment -%}
+{%- if include.class == "header__logo" and include.context == "menu" -%}
+    {%- assign logo_src = "icons/diode-collab-orange.png" -%}
+    {%- assign logo_width = "300" -%}
+    {%- assign logo_height = "auto" -%}
+    {%- assign logo_style = "object-fit: contain;" -%}
+{%- elsif include.class == "header__logo" -%}
+    {%- assign logo_src = "icons/diode-collab-white.png" -%}
+    {%- assign logo_width = "255.5" -%}
+    {%- assign logo_height = "auto" -%}
+    {%- assign logo_style = "object-fit: contain;" -%}
+{%- else -%}
+    {%- assign logo_src = "logo.svg" -%}
+    {%- assign logo_width = "129" -%}
+    {%- assign logo_height = "42" -%}
+    {%- assign logo_style = "" -%}
+{%- endif -%}
 <figure class="{{ include.class | default: "logo" }}">
-    <a href="{{ "/" | relative_url }}"><img src="{{ "logo.svg" | prepend: site.path.images | relative_url }}" width="129" height="42" alt="{{ site.name }}"></a>
+    <a href="{{ "/" | relative_url }}"><img src="{{ logo_src | prepend: site.path.images | relative_url }}" width="{{ logo_width }}" {% if logo_height != "auto" %}height="{{ logo_height }}"{% endif %} alt="{{ site.name }}"{% if logo_style != "" %} style="{{ logo_style }}"{% endif %}></a>
 </figure>

@@ -9,21 +9,9 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59C3BGK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 
+	{%- include header.liquid -%}
+
 	<div class="collab-a">
-		{%- if site.nav -%}
-			<div id="menu" class="header__nav">
-				<div class="header__space">
-					<div class="container">
-						{%- include parts/logo.liquid class="header__logo" -%}
-						{%- include parts/nav.liquid class="header__menu" -%}
-						{%- include parts/social.liquid -%}
-						{%- include parts/copyright.liquid -%}
-						<a href="#close" class="header__close" aria-label="Hide navigation"></a>
-					</div>
-				</div>
-			</div>
-			<a href="#menu" class="collab-a-header header__toggle" aria-label="Show navigation"><span></span></a>
-		{%- endif -%}
 		{{ content }}
 	</div>
 

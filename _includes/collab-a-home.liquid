@@ -5,8 +5,6 @@
 {%- comment -%} Decorative background assets (wrapped so markdown doesn't add &lt;p&gt;) {%- endcomment -%}
 <div class="collab-a-bg" aria-hidden="true">
 <img src="{{ 'home/diode-mesh.png' | prepend: site.path.images | relative_url }}" alt="" class="diode-mesh" />
-<img src="{{ 'icons/diode-collab-white.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img2 collab-a-logo-white" />
-<img src="{{ 'icons/diode-collab-white.png' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img2 collab-a-logo-orange" />
 </div>
 
 <div class="collab-a-row1">
@@ -40,12 +38,18 @@ Everything your team needs to stay connected privately, no matter where they are
 			{%- for link in nav_links -%}
 				<p class="collab-a-text-a"><a href="{{ link.url | relative_url }}">{{ link.label }}</a></p>
 			{%- endfor -%}
+		{%- elsif site.nav -%}
+			{%- for data in site.nav -%}
+				{%- if data.title -%}
+					<p class="collab-a-text-a"><a href="{{ data.url | relative_url }}"{% if data.target %} target="{{ data.target }}" rel="noopener"{% endif %}>{{ data.title }}</a></p>
+				{%- endif -%}
+			{%- endfor -%}
 		{%- else -%}
 			<p class="collab-a-text-a"><a href="{{ '/pricing/' | relative_url }}">Pricing</a></p>
 			<p class="collab-a-text-a"><a href="{{ '/blog/' | relative_url }}">Stories</a></p>
 			<p class="collab-a-text-a"><a href="https://docs.diode.io" target="_blank" rel="noopener">Docs</a></p>
 			<p class="collab-a-text-a"><a href="{{ '/support.html' | relative_url }}">Support</a></p>
-			<p class="collab-a-text-a"><a href="{{ '/about/' | relative_url }}">More about Diode</a></p>
+			<p class="collab-a-text-a"><a href="{{ '/about/' | relative_url }}">Learn More</a></p>
 		{%- endif -%}
 	</div>
 	<ul class="collab-a-social-icons">
@@ -69,10 +73,6 @@ Everything your team needs to stay connected privately, no matter where they are
 		<p class="reserved-blurb">{{ footer.line1 | default: footer }}</p>
 		<p class="compliance-blurb">{{ footer.line2 }}</p>
 	{%- else -%}
-		<p class="reserved-blurb">
-			<span class="reserved-blurb-line1">DIODE © {{ site.time | date: "%Y" }}, All Rights Reserved</span>
-			<span class="reserved-blurb-line2"><a href="{{ '/terms/' | relative_url }}">Terms</a> | <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a></span>
-		</p>
-		<p class="compliance-blurb">ISO 27001, SOC-2, GDPR, HIPAA, etc.</p>
+		{%- include parts/copyright.liquid context="footer" -%}
 	{%- endif -%}
 </div>

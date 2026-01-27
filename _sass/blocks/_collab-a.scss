@@ -31,12 +31,16 @@ body.page--collab-a {
   background-position: center;
   background-repeat: no-repeat;
   padding: 51.1px 42px 42.7px 42px;
+  padding-top: 141.1px; /* Original padding (51.1px) + header height (90px) */
   overflow: visible;
   min-height: 100vh;
   min-height: 750px;
   height: auto;
   flex: 1;
   box-sizing: border-box;
+  @include media-breakpoint-up(xl) {
+    padding-top: 211.1px; /* Original padding (51.1px) + header height (160px) */
+  }
 
   &::before {
     content: '';
@@ -76,6 +80,12 @@ body.page--collab-a {
   display: block;
   text-decoration: none;
   color: inherit;
+  @media (min-width: 1200px) {
+    right: calc((100% - 1140px) / 2 + 15px);
+  }
+  @media (min-width: 1400px) {
+    right: calc((100% - 1300px) / 2 + 15px);
+  }
 
   &::before, &::after, span {
     content: '';
@@ -125,6 +135,12 @@ body.page--collab-a {
   left: 54.6px;
   width: calc(100% - 54.6px);
   max-width: 255.5px;
+  @media (min-width: 1200px) {
+    left: calc((100% - 1140px) / 2 + 15px);
+  }
+  @media (min-width: 1400px) {
+    left: calc((100% - 1300px) / 2 + 15px);
+  }
 }
 
 .footer-menu {
@@ -358,7 +374,13 @@ body.page--collab-a {
   flex-shrink: 0;
 }
 
+// Base styles for reserved-blurb and compliance-blurb (shared across footer and header)
 .reserved-blurb {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.26px;
   margin-left: 40px;
   margin-top: -17px;
   margin-bottom: -15px;
@@ -366,6 +388,7 @@ body.page--collab-a {
   display: flex;
   align-items: center;
   text-align: left;
+  gap: 16px;
 
   a {
     color: inherit;
@@ -378,6 +401,11 @@ body.page--collab-a {
 }
 
 .compliance-blurb {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.26px;
   margin-right: 40px;
   margin-top: -17px;
   margin-bottom: -15px;
