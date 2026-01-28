@@ -1,20 +1,28 @@
-{%- comment -%} Use orange logo in hamburger menu (header__space), white logo in header, regular logo elsewhere {%- endcomment -%}
+{%- comment -%} Use orange logo in hamburger menu (header__space), white logo in header (CSS will swap to orange on non-home pages above md), regular logo elsewhere {%- endcomment -%}
 {%- if include.class == "header__logo" and include.context == "menu" -%}
     {%- assign logo_src = "icons/diode-collab-orange.png" -%}
     {%- assign logo_width = "300" -%}
     {%- assign logo_height = "auto" -%}
     {%- assign logo_style = "object-fit: contain;" -%}
+    <figure class="{{ include.class | default: "logo" }}">
+        <a href="{{ "/" | relative_url }}"><img src="{{ logo_src | prepend: site.path.images | relative_url }}" width="{{ logo_width }}" {% if logo_height != "auto" %}height="{{ logo_height }}"{% endif %} alt="{{ site.name }}"{% if logo_style != "" %} style="{{ logo_style }}"{% endif %}></a>
+    </figure>
 {%- elsif include.class == "header__logo" -%}
-    {%- assign logo_src = "icons/diode-collab-white.png" -%}
     {%- assign logo_width = "255.5" -%}
     {%- assign logo_height = "auto" -%}
     {%- assign logo_style = "object-fit: contain;" -%}
+    <figure class="{{ include.class | default: "logo" }}">
+        <a href="{{ "/" | relative_url }}">
+            <img src="{{ 'icons/diode-collab-white.png' | prepend: site.path.images | relative_url }}" width="{{ logo_width }}" height="{{ logo_height }}" alt="{{ site.name }}" style="{{ logo_style }}" class="logo-white">
+            <img src="{{ 'icons/diode-collab-orange.png' | prepend: site.path.images | relative_url }}" width="{{ logo_width }}" height="{{ logo_height }}" alt="{{ site.name }}" style="{{ logo_style }}" class="logo-orange">
+        </a>
+    </figure>
 {%- else -%}
     {%- assign logo_src = "logo.svg" -%}
     {%- assign logo_width = "129" -%}
     {%- assign logo_height = "42" -%}
     {%- assign logo_style = "" -%}
+    <figure class="{{ include.class | default: "logo" }}">
+        <a href="{{ "/" | relative_url }}"><img src="{{ logo_src | prepend: site.path.images | relative_url }}" width="{{ logo_width }}" {% if logo_height != "auto" %}height="{{ logo_height }}"{% endif %} alt="{{ site.name }}"{% if logo_style != "" %} style="{{ logo_style }}"{% endif %}></a>
+    </figure>
 {%- endif -%}
-<figure class="{{ include.class | default: "logo" }}">
-    <a href="{{ "/" | relative_url }}"><img src="{{ logo_src | prepend: site.path.images | relative_url }}" width="{{ logo_width }}" {% if logo_height != "auto" %}height="{{ logo_height }}"{% endif %} alt="{{ site.name }}"{% if logo_style != "" %} style="{{ logo_style }}"{% endif %}></a>
-</figure>

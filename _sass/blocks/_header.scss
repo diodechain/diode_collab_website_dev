@@ -46,6 +46,23 @@
       object-fit: contain;
     }
     
+    // Show white logo by default, hide orange logo
+    .logo-orange {
+      display: none;
+    }
+    
+    // On non-home pages above md breakpoint, show orange logo and hide white logo
+    @include media-breakpoint-up(md) {
+      body:not(.page--collab-a) & {
+        .logo-white {
+          display: none;
+        }
+        .logo-orange {
+          display: block;
+        }
+      }
+    }
+    
     // Orange logo in hamburger menu
     .header__space & img {
       width: 270px;

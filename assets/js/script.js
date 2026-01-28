@@ -15,6 +15,7 @@ ready(() => {
   initOS();
   initReveal();
   initRedirect();
+  initCleanLinks();
 });
 
 function initPopup() {
@@ -571,4 +572,25 @@ function initRedirect() {
     var RedirectPauseSeconds = 5;
     setTimeout("DoTheRedirect('" + RedirectURL + "')", parseInt(RedirectPauseSeconds * 1000));
   }
+}
+
+function initCleanLinks() {
+  // Prevent Google Analytics link decoration on Terms and Privacy Policy links
+  const cleanLinks = document.querySelectorAll('a[href*="diode.io/terms"], a[href*="diode.io/privacy-policy"]');
+  cleanLinks.forEach(link => {
+    // Store the clean URL
+    const cleanUrl = link.href.split('?')[0];
+    
+    // Prevent link decoration by intercepting the click
+    link.addEventListener('click', function(e) {
+      // If the href has been decorated with query params, use the clean URL
+      if (link.href !== cleanUrl && link.href.includes('?')) {
+        e.preventDefault();
+        window.open(cleanUrl, link.target || '_self', 'noopener');
+      }
+    });
+    
+    // Also set data attribute to prevent GTM decoration
+    link.setAttribute('data-gtag-outbound', 'false');
+  });
 }
