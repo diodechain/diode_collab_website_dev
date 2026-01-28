@@ -16,6 +16,7 @@ ready(() => {
   initReveal();
   initRedirect();
   initCleanLinks();
+  initPricingGetStarted();
 });
 
 function initPopup() {
@@ -180,7 +181,10 @@ function initPopup() {
     var popup = document.querySelector(target);
     if (popup) {
       link.area = popup;
-      link.addEventListener('click', togglePopup, false);
+      // Skip pricing-get-started buttons - they'll be handled separately
+      if (!link.classList.contains('pricing-get-started')) {
+        link.addEventListener('click', togglePopup, false);
+      }
     }
   });
 
@@ -592,5 +596,81 @@ function initCleanLinks() {
     
     // Also set data attribute to prevent GTM decoration
     link.setAttribute('data-gtag-outbound', 'false');
+  });
+}
+
+function initPricingGetStarted() {
+  // Handle "Get Started" buttons on pricing page
+  // On large screens: open download overlay
+  // On small screens (mobile): detect iOS/Android and route to appropriate store
+  document.querySelectorAll('.pricing-get-started').forEach((button) => {
+    // Only handle buttons that have store URLs (pricing page buttons)
+    if (!button.hasAttribute('data-ios-url') || !button.hasAttribute('data-android-url')) {
+      return;
+    }
+    
+    // The button.area should already be set by initPopup() above
+    // Handle all clicks ourselves
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Check if screen is mobile (below md breakpoint: 768px)
+      const isMobile = window.innerWidth < 768;
+      
+      if (isMobile) {
+        // Detect iOS or Android
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+        const isAndroid = /android/i.test(userAgent);
+        
+        // Get store URLs from data attributes
+        const iosUrl = button.getAttribute('data-ios-url');
+        const androidUrl = button.getAttribute('data-android-url');
+        
+        // Route to appropriate store
+        if (isIOS && iosUrl) {
+          window.location.href = iosUrl;
+        } else if (isAndroid && androidUrl) {
+          window.location.href = androidUrl;
+        } else {
+          // Fallback: if device not detected, open the popup manually
+          if (button.area) {
+            const popup = button.area;
+            if (popup.classList.contains('visible')) {
+              setTimeout(function () {
+                popup.classList.remove('open');
+                setTimeout(function () {
+                  popup.classList.remove('visible');
+                }, 250);
+              }, 25);
+            } else {
+              popup.classList.add('visible');
+              setTimeout(function () {
+                popup.classList.add('open');
+              }, 25);
+            }
+          }
+        }
+      } else {
+        // On large screens, open the download overlay manually
+        if (button.area) {
+          const popup = button.area;
+          if (popup.classList.contains('visible')) {
+            setTimeout(function () {
+              popup.classList.remove('open');
+              setTimeout(function () {
+                popup.classList.remove('visible');
+              }, 250);
+            }, 25);
+          } else {
+            popup.classList.add('visible');
+            setTimeout(function () {
+              popup.classList.add('open');
+            }, 25);
+          }
+        }
+      }
+      return false;
+    });
   });
 }

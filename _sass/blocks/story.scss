@@ -10,6 +10,15 @@
   @include media-breakpoint-up(xl) {
     margin-bottom: 80px;
   }
+  
+  // Reduce top spacing when following headline (for about page)
+  .headline + & {
+    padding-top: 0;
+    @include media-breakpoint-up(xl) {
+      padding-top: 0;
+      margin-top: -40px;
+    }
+  }
 
   .main > .container > &:last-child {
     margin-bottom: 80px;

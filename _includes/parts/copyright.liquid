@@ -4,7 +4,7 @@
         <span class="reserved-blurb-line1">DIODE © {{ site.time | date: "%Y" }}, All Rights Reserved</span>
         <span class="reserved-blurb-line2"><a href="https://diode.io/terms" target="_blank" rel="noopener">Terms</a> | <a href="https://diode.io/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></span>
     </p>
-    <p class="compliance-blurb">ISO 27001, SOC-2, GDPR, HIPAA, etc.</p>
+    <p class="compliance-blurb">ISO 27001, SOC-2, GDPR, HIPAA</p>
 {%- elsif site.copyright -%}
     <p class="{{ include.class | default: "copyright" }}">{{ site.copyright }}{%- if site.links.terms -%}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{ site.links.terms.url | relative_url }}">{{ site.links.terms.title }}</a>{% endif %}{%- if site.links.privacy -%}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{{ site.links.privacy.url | relative_url }}">{{ site.links.privacy.title }}</a>{% endif %}</p>
 {%- endif -%}

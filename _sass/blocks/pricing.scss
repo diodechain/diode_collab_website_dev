@@ -130,7 +130,8 @@
     margin: 0 auto;
     position: relative;
     color: black;
-    background: $color-orange;
+    background: white;
+    border: 2px solid $color-orange;
     @include media-breakpoint-up(md) {
       margin-right: -10px;
       margin-left: -10px;
@@ -150,9 +151,22 @@
           padding-top: 0;
         }
       }
+      
+      // Reduce gap between pricing blocks at largest breakpoint
+      @include media-breakpoint-up(xxxxl) {
+        .row {
+          margin-left: -5px;
+          margin-right: -5px;
+        }
+        
+        .col {
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
     }
 
-    &-title, &-description {
+    &-title {
       margin-bottom: 20px;
       font-size: 20px;
       line-height: 20px;
@@ -165,6 +179,10 @@
     }
 
     &-description {
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 400;
       @include media-breakpoint-up(md) {
         min-height: 80px;
       }
@@ -172,7 +190,10 @@
         min-height: 60px;
       }
       @include media-breakpoint-up(xl) {
+        margin-bottom: 30px;
         min-height: 66px;
+        font-size: 18px;
+        line-height: 22px;
       }
     }
 
@@ -205,16 +226,6 @@
       span {
         display: block;
         position: relative;
-        &::before {
-          content: '$';
-          font-size: 40px;
-          line-height: 36px;
-          @include media-breakpoint-up(xl) {
-            margin-left: -5px;
-            font-size: 60px;
-            line-height: 56px;
-          }
-        }
         &::after {
           margin-left: 4px;
           content: '/user/mo';

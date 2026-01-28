@@ -10,78 +10,44 @@ redirect_from:
 ### Hero
 hero:
   animated: true
-  heading: A little bit <br>about us
-  subheading: How we started, what we believe in, <br>and where we’re going
+  heading: Why Diode Collab?
+  subheading: Diode Collab is different - it uses blockchain technology to protect identities and to keep data off of servers.
   image: hero/about.webp
 
 
 ### Headline below Hero
 headline:
   animated: false
-  title: What drives us. Everyday.
-  text: We’re governed by the belief that technology should help humans thrive. It should enhance our ability to operate, create, explore, educate, and innovate - unhindered.
+  title: Our team is determined to protect privacy
+  text: We believe privacy is a fundamental human right, and that technology should help humans thrive.
 
 
 ### Top Story
 story:
   animated: false
-  title: The beginning of Diode
-  heading: It all started with fixing a web2 leak
+  title: Not your keys, not your data
+  heading: Why blockchain?
   content: |
-    Diode was born when co-founder Dominic Letz needed to solve for a Man in the Middle attack against Internet time - a prerequisite for a legacy Web2 PKI-based security issue that had bricked millions of devices.
+    Blockchain allows every individual to have full custody (aka "self custody") of their digital assets.  Diode extends this technology to communications.  
     
-    He found a solution by applying decentralized consensus to even the most resource constrained devices.
+    In Diode Collab, every device has an encrypted-on-disk key that proves its authority to communicate on your account's behalf to others using Diode Collab. 
     
-    The Diode team has been innovating ever since to make even the most fluid IT environments secure.
+    No data is on-chain, only proofs of membership.  Diode's Oasis partnership ensures that even these proofs are opaque to everyone except the members.  
   image:
     src: story/about.svg
-
-
-### Our Team
-team:
-  animated: false
-  title: Our Team
-  heading: The Diode team has collaborated for over 10 years on high availability software that helps organizations transform their industries
-  members:
-  - name: Hans
-    title: CEO and Co-Founder
-    linkedin: "https://www.linkedin.com/in/hansrempel/"
-    photo: team/hans.jpg
-
-  - name: Dominic
-    title: CTO and Co-Founder
-    linkedin: "https://www.linkedin.com/in/dominic-letz/"
-    photo: team/dominic.jpg
-
-  - name: Zach
-    title: Developer
-    photo: team/zach.png
-
-  - name: Eric
-    title: Business Development
-    photo: team/eric.jpg
-
-  - name: Spiros
-    title: Developer
-    photo: team/spiros.jpg
-
-  - name: Jon
-    title: Brand and Market
-    photo: team/jon.png
-
 
 ### Article: Our desire
 article:
   animated: false
-  heading: Our vision is to transform the Internet into everyone's private network
+  heading: Diode Collab - the world's most secure collaboration app
   content: |
-    At Diode, we love how the Internet is a wonderful tool that can enable free, civil, and thriving collaboration. However, it is has become increasingly difficult to leverage the Internet’s benefits without risking privacy or sustainability. 
-  
-    Everything we do at Diode strives to enable teams and organizations with the means of secure and confidential operations.
-  
-    Today, the Diode team is busy developing next generation applications, expanding the capabilities of the Diode Network, and growing our base of customers, partners, and developers.
+    Diode Collab is end to end encrypted, it stores no data on servers, it requires no phone numbers (or other PII), and blockchain contracts automate how the app works.
 
-    If you’d like to find out more, or chat about how to best collaborate:
+    Not only is Diode Collab ISO 27001 and SOC-2 compliant, the tech is actually secure.  
+
+    Diode Collab is protecting team and organizations around the world.  We hope you will come along and experience the peace of mind and satisfaction of having full sovereignty over your data, identities, and relationships.
+
+    If you'd like to chat with one of the team, please
   buttons:
   - title: Get in Touch
     url: "https://contactdiode.paperform.co/"
@@ -96,7 +62,5 @@ article:
 {%- include story.liquid -%}
 
 {%- include team.liquid -%}
-
----
 
 {%- include article.liquid data="article" -%}

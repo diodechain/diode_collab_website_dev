@@ -11,9 +11,38 @@
         {%- if data.blurb -%}<p class="pricing__title">{{ data.blurb }}</p>{% endif %}
     </header>
 
-    <dl class="pricing__include">
-        <a href="#download-app" class="btn popup-open">Download</a>
-    </dl>
+    <div class="pricing__plans">
+        <div class="row justify-content-center">
+            {% for plan in data.plans %}
+                <div class="col col-12 col-md-4">
+                    <div class="pricing__plan">
+                        {%- if plan.title -%}<p class="pricing__plan-title">{{ plan.title }}</p>{% endif %}
+                        {%- if plan.description -%}<p class="pricing__plan-description">{{ plan.description }}</p>{% endif %}
+                        {%- if plan.price -%}
+                            <div class="pricing__plan-price">
+                                <span>${{ plan.price.monthly }}</span>
+                            </div>
+                        {% else %}
+                            <p class="pricing__plan-get-in-touch">Get in Touch</p>
+                        {% endif %}
+                        {%- if plan.features -%}
+                            <div class="pricing__plan-features">
+                                {{ plan.features | markdownify }}
+                            </div>
+                        {% endif %}
+                        <div class="pricing__plan-action">
+                            {% if plan.action %}
+                                <a href="{{ plan.action }}" class="btn btn-primary pricing-get-started">{{ plan.button }}</a>
+                            {% else %}
+                                <a href="#download-app" class="btn btn-primary pricing-get-started popup-open" data-plan-url="{{ plan.id.monthly }}" data-ios-url="{{ site.download.app.ios }}" data-android-url="{{ site.download.app.android }}">{{ plan.button }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
     {%- if data.include -%}
         <dl class="pricing__include">
             <dd>{{ data.include }}:</dd>
@@ -30,48 +59,6 @@
             </dt>
         </dl>
     {% endif %}
-
-    <input id="switch" class="pricing__checkbox" type="checkbox"/>
-    <div class="pricing__switch">
-        <label for="switch"></label>
-        <span class="yearly">Yearly</span>
-        <span class="monthly">Monthly</span>
-    </div>
-
-    <div class="pricing__plans">
-        <div class="row justify-content-center">
-            {% for plan in data.plans %}
-                <div class="col col-12 col-md-4">
-                    <div class="pricing__plan">
-                        {%- if plan.title -%}<p class="pricing__plan-title">{{ plan.title }}</p>{% endif %}
-                        {%- if plan.description -%}<p class="pricing__plan-description">{{ plan.description }}</p>{% endif %}
-                        {%- if plan.price -%}
-                            <div class="pricing__plan-price">
-                                <span class="yearly">{{ plan.price.yearly }}</span>
-                                <span class="monthly">{{ plan.price.monthly }}</span>
-                                <small class="pricing__plan-price-yearly yearly">Billed yearly as ${{ plan.price.year }}</small>
-                            </div>
-                        {% else %}
-                            <p class="pricing__plan-get-in-touch">Get in Touch</p>
-                        {% endif %}
-                        {%- if plan.features -%}
-                            <div class="pricing__plan-features">
-                                {{ plan.features | markdownify }}
-                            </div>
-                        {% endif %}
-                        <div class="pricing__plan-action">
-                            {% if plan.action %}
-                                <a href="{{ plan.action }}" class="btn btn-primary">{{ plan.button }}</a>
-                            {% else %}
-                                <a href="{{ plan.id.yearly }}" class="btn btn-primary yearly">{{ plan.button }}</a>
-                                <a href="{{ plan.id.monthly }}" class="btn btn-primary monthly">{{ plan.button }}</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
 </section>
 
 <script src="https://js.stripe.com/v3/"></script>

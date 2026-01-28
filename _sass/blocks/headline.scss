@@ -20,7 +20,7 @@
   @include media-breakpoint-up(sm) {
     padding: 40px 50px;
     border-radius: 120px 120px 0 120px;
-    margin-top: 0;
+    margin-top: -40px;
     margin-right: -15px;
     margin-bottom: 120px;
     margin-left: -15px;
@@ -43,11 +43,16 @@
     min-height: 260px;
     padding: 45px 110px;
     border-radius: 145px 145px 0 145px;
-    margin-top: -30px;
+    margin-top: -50px;
     margin-bottom: 175px;
     font-size: 22px;
     line-height: 24px;
     background: $color-orange;
+    
+    // Reduce bottom margin when followed by story (for about page)
+    & + .story {
+      margin-bottom: 135px; // Reduced from default 175px
+    }
   }
 
   &::after {
@@ -122,6 +127,16 @@
   }
 
   p {margin: 0;}
+
+  // Reduce spacing when followed by story (for about page)
+  & + .story {
+    @include media-breakpoint-up(sm) {
+      margin-top: -20px;
+    }
+    @include media-breakpoint-up(xl) {
+      margin-top: -40px;
+    }
+  }
 
   // Homepage version
   .hero--homepage ~ & {

@@ -38,6 +38,80 @@
       }
     }
   }
+  
+  // Footer credits: ensure blurbs are in a row like home page
+  .footer-credits {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 0; // Remove any default margin, let parent gap (16.8px) handle spacing
+    margin-bottom: 0;
+  }
+  
+  // On small screens, match home page layout: stack footer menu and socials vertically
+  @include media-breakpoint-down(md) {
+    .footer-menu {
+      flex-direction: column;
+      align-items: center;
+      gap: 16.8px;
+    }
+    
+    .home-page-menu {
+      margin-left: auto;
+      margin-right: auto;
+      align-items: center;
+    }
+    
+    .home-page-menu .collab-a-text-a:nth-child(3),
+    .home-page-menu .collab-a-text-a:nth-child(4) {
+      display: none;
+    }
+    
+    .collab-a-social-icons {
+      margin-left: auto;
+      margin-right: auto;
+      justify-content: center;
+    }
+    
+    // Footer credits: stack blurbs vertically, each on own row, centered
+    // The parent .footer gap (16.8px) handles spacing between footer-menu and footer-credits
+    .footer-credits {
+      flex-direction: column;
+      align-items: center;
+      gap: 9.8px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    .reserved-blurb {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-top: 0 !important; // Override negative margin (-17px) from base styles
+      margin-bottom: 0 !important; // Override negative margin (-15px) from base styles
+      min-height: auto !important;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    .reserved-blurb-line1,
+    .reserved-blurb-line2 {
+      display: block;
+      white-space: nowrap;
+    }
+    
+    .compliance-blurb {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-top: 0 !important; // Override negative margin (-17px) from base styles
+      margin-bottom: 0 !important; // Override negative margin (-15px) from base styles
+      min-height: auto !important;
+      text-align: center;
+    }
+  }
 
   .container {
     padding-top: 51px;
