@@ -20,6 +20,24 @@
     font-size: 17px;
     line-height: 20px;
   }
+  
+  // Apply same gap as home page when using collab-a-footer component
+  display: flex;
+  flex-direction: column;
+  gap: 16.8px;
+  
+  // Social icons on non-home pages: orange by default, black on hover
+  .collab-a-social-icons {
+    a svg path {
+      fill: $color-orange;
+    }
+    
+    @media (hover: hover) {
+      a:hover svg path {
+        fill: #000;
+      }
+    }
+  }
 
   .container {
     padding-top: 51px;
