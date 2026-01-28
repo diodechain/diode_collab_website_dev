@@ -39,7 +39,7 @@ story:
 ### Article: Our desire
 article:
   animated: false
-  heading: Diode Collab - the world's most secure collaboration app
+  heading: Diode Collab - the world's most secure team collaboration app
   content: |
     Diode Collab is end to end encrypted, it stores no data on servers, it requires no phone numbers (or other PII), and blockchain contracts automate how the app works.
 
@@ -47,10 +47,25 @@ article:
 
     Diode Collab is protecting team and organizations around the world.  We hope you will come along and experience the peace of mind and satisfaction of having full sovereignty over your data, identities, and relationships.
 
+
+
+### Article: About Diode
+article2:
+  animated: false
+  heading: Who is Diode?
+  content: |
+    Diode is a blockchain secured networking company that specializes in enterprise grade "zero trust" communications that do not rely on centralized third party components (e.g. PKI or DNS).
+
+    Diode Collab was created by Diode to provide highly secure communication for teams, families, and organizations.  
+
+    The Diode Network is a permissionless worldwide automated communication network - anyone can use it without creating an account with Diode.  All that is required is to create a blockchain defined network and to sponsor the traffic of devices belonging to the network.  The devices can be IoT systems, servers, consumer devices, or SaaS applications (like Diode Collab).
+
+    Diode's other products include Self Custody WireGuard (ZTNA Console) and a suite of Protected AI Solutions.
+
     If you'd like to chat with one of the team, please
   buttons:
-  - title: Get in Touch
-    url: "https://contactdiode.paperform.co/"
+  - title: Visit Diode
+    url: "https://diode.io"
     target: _blank
 
 ---
@@ -59,8 +74,10 @@ article:
 
 {%- include headline.liquid -%}
 
+{%- include article.liquid data="article" -%}
+
 {%- include story.liquid -%}
 
 {%- include team.liquid -%}
 
-{%- include article.liquid data="article" -%}
+{%- include article.liquid data="article2" -%}
