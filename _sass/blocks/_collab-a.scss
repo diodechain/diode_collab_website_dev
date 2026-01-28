@@ -31,16 +31,13 @@ body.page--collab-a {
   background-position: center;
   background-repeat: no-repeat;
   padding: 51.1px 42px 42.7px 42px;
-  padding-top: 141.1px; /* Original padding (51.1px) + header height (90px) */
+  padding-top: 100px; 
   overflow: visible;
   min-height: 100vh;
   min-height: 750px;
   height: auto;
   flex: 1;
   box-sizing: border-box;
-  @include media-breakpoint-up(xl) {
-    padding-top: 211.1px; /* Original padding (51.1px) + header height (160px) */
-  }
 
   &::before {
     content: '';
@@ -64,50 +61,6 @@ body.page--collab-a {
 
   a {
     cursor: pointer;
-  }
-}
-
-.collab-a-header {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 51.1px;
-  right: 42px;
-  z-index: 3;
-  cursor: pointer;
-  flex-shrink: 0;
-  align-self: flex-end;
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  @media (min-width: 1200px) {
-    right: calc((100% - 1140px) / 2 + 15px);
-  }
-  @media (min-width: 1400px) {
-    right: calc((100% - 1300px) / 2 + 15px);
-  }
-
-  &::before, &::after, span {
-    content: '';
-    width: 23px;
-    height: 2px;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    background: white;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform: none;
-    transform-origin: center;
-  }
-  &::before {
-    top: 16px;
-  }
-  &::after {
-    bottom: 16px;
   }
 }
 
@@ -177,13 +130,29 @@ body.page--collab-a {
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: opacity 0.3s ease;
     
     svg {
       width: auto;
       height: 24px;
+      transition: fill 0.3s ease;
       
       path {
         fill: white;
+        transition: fill 0.3s ease;
+      }
+    }
+    
+    // YouTube icon is smaller, increase by 10%
+    &[aria-label="YouTube"] svg {
+      height: 26.4px; // 24px * 1.1 = 26.4px
+    }
+    
+    @media (hover: hover) {
+      &:hover {
+        svg path {
+          fill: $color-orange;
+        }
       }
     }
   }
@@ -193,7 +162,7 @@ body.page--collab-a {
   position: relative;
   z-index: 5;
   margin-left: 48.3px;
-  margin-top: 42px;
+  margin-top: 0px;
   display: flex;
   align-items: flex-start;
   gap: 72.1px;
@@ -314,7 +283,7 @@ body.page--collab-a {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  align-items: center;
+  align-items: flex-start; /* Align badges at the top */
 }
 
 .collab-a-appstore-badge,
@@ -347,9 +316,12 @@ body.page--collab-a {
   a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.3s ease;
 
-    &:hover {
-      text-decoration: underline;
+    @media (hover: hover) {
+      &:hover {
+        color: $color-orange;
+      }
     }
   }
 }
@@ -393,9 +365,12 @@ body.page--collab-a {
   a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.3s ease;
 
-    &:hover {
-      text-decoration: underline;
+    @media (hover: hover) {
+      &:hover {
+        color: $color-orange;
+      }
     }
   }
 }

@@ -15,10 +15,7 @@
 
   .container {
     height: 100%;
-    position: relative;
-    @include media-breakpoint-up(xxl) {
-      position: static;
-    }
+    position: static; /* Don't create positioning context - let header__logo and header__toggle position relative to .header */
   }
 
   &__brand {
@@ -28,13 +25,11 @@
   &__logo {
     position: absolute;
     top: 46.2px;
-    left: 54.6px;
+    left: 82px; /* Fixed position from viewport edge: 42px (collab-a padding) + 40px (footer menu margin) = 82px */
     z-index: 5;
-    @include media-breakpoint-up(xl) {
-      left: calc((100% - 1140px) / 2 + 15px);
-    }
-    @include media-breakpoint-up(xxl) {
-      left: calc((100% - 1300px) / 2 + 15px);
+    @include media-breakpoint-down(md) {
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     a {
@@ -64,14 +59,11 @@
     height: 40px;
     position: absolute;
     top: 51.1px;
-    right: 42px;
+    right: 82px; /* Fixed position from viewport edge: 42px (collab-a padding) + 40px (social icons margin) = 82px */
     z-index: 3;
     cursor: pointer;
-    @include media-breakpoint-up(xl) {
-      right: calc((100% - 1140px) / 2 + 15px);
-    }
-    @include media-breakpoint-up(xxl) {
-      right: calc((100% - 1300px) / 2 + 15px);
+    @include media-breakpoint-down(md) {
+      display: none;
     }
 
     &::before, &::after, span {
@@ -86,16 +78,31 @@
       left: 0;
       z-index: 1;
       background: white;
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
       transform: none;
       transform-origin: center;
     }
     &::before {top: 16px;}
     &::after {bottom: 16px;}
 
+    @media (hover: hover) {
+      &:hover {
+        &::before, &::after, span {
+          background: $color-orange;
+        }
+      }
+    }
+
     .header--dark & {
       &::before, &::after, span {
         background: white;
+      }
+      @media (hover: hover) {
+        &:hover {
+          &::before, &::after, span {
+            background: $color-orange;
+          }
+        }
       }
     }
     .header--white & {
@@ -103,6 +110,13 @@
         background: white;
         @include media-breakpoint-up(md) {
           background: black;
+        }
+      }
+      @media (hover: hover) {
+        &:hover {
+          &::before, &::after, span {
+            background: $color-orange;
+          }
         }
       }
     }
@@ -184,6 +198,13 @@
         
         a {
           color: #000 !important;
+          transition: color 0.3s ease;
+          
+          @media (hover: hover) {
+            &:hover {
+              color: $color-orange !important;
+            }
+          }
         }
       }
       
@@ -198,26 +219,21 @@
 
   &__menu {
     width: 100%;
-    min-height: 100%;
-    padding: 110px 0 90px;
-    margin: 0;
+    padding: 60px 0 90px;
     font: 600 38px/42px $font-heading;
     list-style: none;
     position: relative;
     z-index: 1;
     @include media-breakpoint-up(sm) {
-      padding-bottom: 110px;
       -webkit-column-count: 2;
       -moz-column-count: 2;
       column-count: 2;
     }
     @include media-breakpoint-up(md) {
-      padding-top: 100px;
       font-size: 45px;
       line-height: 47px;
     }
     @include media-breakpoint-up(xl) {
-      padding-top: 100px;
       font-size: 45px;
       line-height: 47px;
     }
@@ -306,15 +322,7 @@
     @include media-breakpoint-up(md) {
       margin-top: -90px;
     }
-    @include media-breakpoint-up(xl) {
-      width: 50%;
-      margin-top: -98px;
-      float: right;
-      left: -5px;
-    }
-    @include media-breakpoint-up(xxl) {
-      left: -74px;
-    }
+
   }
 
   .copyright {

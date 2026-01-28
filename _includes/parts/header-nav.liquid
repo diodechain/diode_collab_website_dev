@@ -1,0 +1,17 @@
+{%- comment -%} Reusable header navigation component {%- endcomment -%}
+{%- if site.nav -%}
+    <div id="menu" class="header__nav">
+        <div class="header__space">
+            <div class="container">
+                <div class="header__top-bar">
+                    {%- include parts/logo.liquid class="header__logo" context="menu" -%}
+                    <a href="#close" class="header__close" aria-label="Hide navigation"></a>
+                </div>
+                {%- include parts/nav.liquid class="header__menu" -%}
+                {%- include parts/social.liquid -%}
+                {%- include parts/copyright.liquid context="menu" -%}
+            </div>
+        </div>
+    </div>
+    <a href="#menu" class="header__toggle" aria-label="Show navigation"><span></span></a>
+{%- endif -%}
