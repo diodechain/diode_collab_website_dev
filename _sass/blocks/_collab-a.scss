@@ -376,6 +376,7 @@ body.page--collab-a {
 }
 
 .compliance-blurb {
+  display: none; // Hidden for now
   font-family: 'IBM Plex Mono', monospace;
   font-size: 13px;
   font-weight: 400;
@@ -385,7 +386,6 @@ body.page--collab-a {
   margin-top: -17px;
   margin-bottom: -15px;
   min-height: 45px;
-  display: flex;
   align-items: center;
   text-align: right;
 
