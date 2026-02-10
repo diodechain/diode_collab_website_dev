@@ -3,6 +3,17 @@
    ========================================================================== */
 .download-popup {
 
+  /* In popup only: "By downloading Diode Collab" one font size smaller */
+  .popup & .download-app-content__header p {
+    font-size: 13px;
+    @include media-breakpoint-up(md) {
+      font-size: 14px;
+    }
+    @include media-breakpoint-up(xl) {
+      font-size: 15px;
+    }
+  }
+
   &__buttons {
     margin-bottom: 30px;
 

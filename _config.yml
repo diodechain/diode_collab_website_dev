@@ -40,6 +40,8 @@ nav:
   url: "/joinzone/?zone=Support#GZF6Mm8FE23omWQ53l4S-pzr2V3LYPlLncupAbPCXnDU9biiaFDTc8sJJwsM"
 - title: Learn More
   url: "/about/"
+- title: Download
+  url: "/download/"
 
 # Other Links
 links:

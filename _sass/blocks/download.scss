@@ -196,6 +196,51 @@
     @include user-select;
   }
 
+  // Download page: app content (same as popup, standalone)
+  &--app-page {
+    .download__heading {
+      margin-bottom: 20px;
+      text-align: center;
+      @include media-breakpoint-up(xl) {
+        margin-bottom: 28px;
+      }
+    }
+    .download-app-content__header {
+      margin-bottom: 24px;
+      text-align: center;
+      p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        @include media-breakpoint-up(md) {
+          font-size: 16px;
+        }
+      }
+    }
+    .download-popup {
+      text-align: center;
+    }
+    .download-popup__buttons {
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      @include media-breakpoint-up(md) {
+        gap: 14px;
+      }
+    }
+    .download-popup__other {
+      text-align: left;
+      display: inline-block;
+    }
+    .download-popup__other-title {
+      text-align: center;
+    }
+    .download-popup__note {
+      text-align: center;
+    }
+  }
+
   & + & {
     &::before {
       @include pseudo;

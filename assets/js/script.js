@@ -17,7 +17,27 @@ ready(() => {
   initRedirect();
   initCleanLinks();
   initPricingGetStarted();
+  initBackForwardCacheRestore();
 });
+
+// When user returns via back button (bfcache restore), reset layout so header/content aren't shifted
+function initBackForwardCacheRestore() {
+  window.addEventListener('pageshow', function(event) {
+    if (!event.persisted) return;
+    // Reset scroll (can be wrong after bfcache restore)
+    window.scrollTo(0, 0);
+    document.documentElement.scrollLeft = 0;
+    document.body.scrollLeft = 0;
+    // Clear body state that might have been left when navigating away (e.g. popup open)
+    document.body.classList.remove('menu-open');
+    document.body.style.overflow = '';
+    // Close any popups that were visible when user navigated away
+    document.querySelectorAll('.popup.visible').forEach(function(popup) {
+      popup.classList.remove('open');
+      popup.classList.remove('visible');
+    });
+  });
+}
 
 function initPopup() {
   function preventDefault(e) {
@@ -213,6 +233,26 @@ function initPopup() {
       }
     }, 100);
   }
+
+  // If page was loaded with #download-app in the URL, open the download popup
+  function openDownloadPopupIfHash() {
+    if (window.location.hash !== '#download-app') return;
+    var downloadPopup = document.querySelector('#download-app');
+    if (downloadPopup && !downloadPopup.classList.contains('visible')) {
+      showPopup(downloadPopup);
+    }
+  }
+  if (window.location.hash === '#download-app') {
+    setTimeout(openDownloadPopupIfHash, 150);
+    if (document.readyState === 'complete') {
+      setTimeout(openDownloadPopupIfHash, 300);
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(openDownloadPopupIfHash, 50);
+      });
+    }
+  }
+  window.addEventListener('hashchange', openDownloadPopupIfHash);
 }
 
 function initVideoPopup() {

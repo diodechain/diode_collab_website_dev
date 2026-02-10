@@ -11,65 +11,37 @@ redirect_from:
 hero:
   animated: true
   class: hero--right
-  heading: Download Center
-  subheading: Download our zero trust collaboration app, asset management CLI, and network node below.
+  heading: Download
+  subheading: Get Diode Collab
   scroll: "#app"
   image: hero/download.webp
 
 
-### Download: App
-app:
-  animated: false
-  title: For your people
-  heading: Get Diode Collab
-  subheading: Chat, files, assets, and more - replace your leaky team collaboration app with Diode Collab.
-  buttons:
-  - title: Download
-    url: "#download-app"
-    class: popup-open
-  - title: Learn More
-    url: "/products/collab/"
-    class: "btn--blank btn--arrow"
-
-
-### Popup: App
+### Popup: App (used by download popup)
 popup:
   title: Diode Collab
-
-
-### Download: CLI
-cli:
-  animated: false
-  title: For your assets
-  heading: Get the CLI
-  subheading: Developers and IT admins can enable zero trust remote access for devices and servers so that the right people and systems can interact.
-  install: true
-  buttons:
-  - title: Learn More
-    url: "/products/cli/"
-    class: "btn--blank btn--arrow"
 
 
 ### Download: Network
 network:
   animated: false
-  title: For your enterprise
-  heading: Join the Network
-  subheading: You can deepen the security of your zero trust perimeters by hosting a node.
+  title: Connect secure assets to your team's Diode Collab environment
+  heading: Unlock the Network
   buttons:
-  - title: Run a Node
-    url: "https://network.docs.diode.io/docs/"
+  - title: Open ZTNA Console
+    url: "https://ztna.diode.io"
+    class: "btn--blank btn--arrow"
     target: _blank
   - title: Learn More
-    url: "/products/network/"
+    url: "https://diode.io/products/cli/"
+    target: _blank
+  - title: Try Private AI
+    url: "https://ztna.diode.io"
     class: "btn--blank btn--arrow"
+    target: _blank
 
 ---
 
 {%- include hero.liquid -%}
-
-{%- include download.liquid id="app" data="app" -%}
-
-{%- include download.liquid id="cli" data="cli" -%}
-
+{%- include download-app-section.liquid -%}
 {%- include download.liquid id="network" data="network" -%}
