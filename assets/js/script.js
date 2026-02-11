@@ -597,10 +597,13 @@ function initOS() {
   }
   applyDetectedOS(os);
 
-  // Mac: try to distinguish ARM vs Intel via User-Agent Client Hints (Chrome/Edge)
-  if (os === 'macos-arm' && navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === 'function') {
-    navigator.userAgentData.getHighEntropyValues(['architecture']).then(function (hints) {
-      if (hints.architecture === 'x86') {
+  // User-Agent Client Hints: fixes spoofed UAs (e.g. Chromium on Pi reports CrOS x86_64 but hints give real arch)
+  if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === 'function') {
+    navigator.userAgentData.getHighEntropyValues(['architecture', 'bitness', 'platform']).then(function (hints) {
+      if (String(hints.platform || '').toLowerCase() === 'linux' && String(hints.architecture || '').toLowerCase() === 'arm') {
+        // Bitness is unreliable on Pi (32-bit OS often reports "64"). Default to 32-bit so 32-bit Pi get the right button; 64-bit users can pick from "Or choose another Platform".
+        applyDetectedOS('raspberry-pi');
+      } else if (os === 'macos-arm' && hints.architecture === 'x86') {
         applyDetectedOS('macos-intel');
       }
     }).catch(function () {});
