@@ -75,8 +75,11 @@ social:
 # Download Links
 download:
   app:
-    macos: "https://download.diode.io/downloads/collab/dDrive-1.18.13.dmg"
-    macos-checksum:
+    # Direct download URLs (same host as Windows/Linux); do not use collab.diode.io/download
+    macos-arm: "https://download.diode.io/downloads/collab/dDrive-1.18.21.dmg"
+    macos-arm-checksum:
+    macos-intel: "https://download.diode.io/downloads/collab/dDrive-1.18.21-intel.dmg"
+    macos-intel-checksum:
     windows: "https://download.diode.io/downloads/collab/dDrive-1.18.21.exe"
     windows-checksum:
     linux: "https://github.com/diodechain/diode_feedback/releases/download/v1.0.0/dDrive-1.18.21-linux-x86_64.run"
