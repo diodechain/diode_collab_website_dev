@@ -75,16 +75,16 @@ social:
 # Download Links
 download:
   app:
-    macos: "https://download.diode.io/downloads/collab/dDrive-1.18.13.dmg"
+    macos: "https://download.diode.io/downloads/collab/dDrive-1.18.21.dmg"
     macos-checksum:
-    windows: "https://download.diode.io/downloads/collab/dDrive-1.18.13.exe"
+    windows: "https://download.diode.io/downloads/collab/dDrive-1.18.21.exe"
     windows-checksum:
-    linux: "https://github.com/diodechain/diode_feedback/releases/download/v1.0.0/dDrive-1.18.13-linux-x86_64.run"
-    linux-checksum: f774d7da1a937fc4e2e630c5b9bbf950bc0c1b4e
-    raspberry-pi: "https://github.com/diodechain/diode_feedback/releases/download/v1.0.0/dDrive-1.18.13-linux-arm32.run"
-    raspberry-pi-checksum: eab99f6654ad8b0d8d13e11a6c245090bea1308f
-    raspberry-pi-64: "https://github.com/diodechain/diode_feedback/releases/download/v1.0.0/dDrive-1.18.13-linux-arm64.run"
-    raspberry-pi-64-checksum: 168f6e49583200d3a1203541647aeb0863929b21
+    linux: "https://github.com/diodechain/diode_feedback/releases/download/v1.0.0/dDrive-1.18.21-linux-x86_64.run"
+    linux-checksum: a9567e561b7d8ec4fbcd1e4b72b5321b2d41643a
+    raspberry-pi: "https://github.com/diodechain/diode_feedback/releases/download/v1.0.0/dDrive-1.18.21-linux-arm32.run"
+    raspberry-pi-checksum: 7ee58402f6a592e9a27b6e75ce23af94f394ef5f
+    raspberry-pi-64: "https://github.com/diodechain/diode_feedback/releases/download/v1.0.0/dDrive-1.18.21-linux-arm64.run"
+    raspberry-pi-64-checksum: 371d707de5afb3f6884de2715d87a7c186a88e22
     ios: "https://apps.apple.com/us/app/diode-drive/id1605222443"
     ios-checksum:
     android: "https://play.google.com/store/apps/details?id=io.diode.drive"
@@ -105,7 +105,7 @@ download:
 
 
 # Footer
-copyright: "DIODE &copy; 2024, All Rights Reserved"
+copyright: "DIODE &copy; 2026, All Rights Reserved"
 security:
   title: "Secure your perimeter."
   content: "We’re governed by the belief that technology should help people thrive. It should enhance our ability to operate, create, explore, educate, and innovate - unhindered."
