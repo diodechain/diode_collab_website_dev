@@ -554,51 +554,67 @@ function initScroll() {
 
 function initOS() {
   let OSName = 'Unknown OS';
-  if (navigator.userAgent.indexOf('Win') !== -1) {
+  var ua = navigator.userAgent;
+  var platform = (navigator.platform || '').toLowerCase();
+
+  if (ua.indexOf('Win') !== -1) {
     OSName = 'Windows';
   }
-  if (navigator.userAgent.indexOf('Mac') !== -1) {
-    OSName = 'MacOS';
+  if (ua.indexOf('Mac') !== -1 && ua.indexOf('iPhone') === -1 && ua.indexOf('iPad') === -1) {
+    OSName = 'MacOS ARM'; // default; may be corrected to MacOS Intel via userAgentData below
   }
-  if (navigator.userAgent.indexOf('iPod') !== -1) {
+  if (ua.indexOf('iPod') !== -1) {
     OSName = "iOS";
   }
-  if (navigator.userAgent.indexOf('iPad') !== -1) {
+  if (ua.indexOf('iPad') !== -1) {
     OSName = "iOS";
   }
-  if (navigator.userAgent.indexOf('iPhone') !== -1) {
+  if (ua.indexOf('iPhone') !== -1) {
     OSName = "iOS";
   }
-  if (navigator.userAgent.indexOf('Linux') !== -1) {
-    if (navigator.userAgent.indexOf('arm') !== -1) {
-      OSName = 'Raspberry Pi';
-    } else {
-      OSName = 'Linux';
-    }
-  }
-  if (navigator.userAgent.indexOf('Raspberry') !== -1) {
-    OSName = 'Raspberry Pi';
-  }
-  if (navigator.userAgent.indexOf('Raspbian') !== -1) {
-    OSName = 'Raspberry Pi';
-  }
-  if (navigator.userAgent.indexOf('Android') !== -1) {
+  if (ua.indexOf('Android') !== -1) {
     OSName = 'Android';
+  }
+  // Raspberry Pi / Linux ARM: use userAgent and navigator.platform (e.g. "Linux armv7l", "Linux aarch64")
+  var isArm = ua.indexOf('arm') !== -1 || ua.indexOf('aarch64') !== -1 || /aarch64|armv[67]l|arm64/i.test(ua) ||
+    /armv[67]l|aarch64/.test(platform);
+  if (ua.indexOf('Linux') !== -1 && isArm) {
+    OSName = (/aarch64|arm64/i.test(ua) || /aarch64/.test(platform)) ? 'Raspberry Pi 64' : 'Raspberry Pi';
+  } else if (ua.indexOf('Linux') !== -1) {
+    OSName = 'Linux';
+  }
+  if (ua.indexOf('Raspberry') !== -1 || ua.indexOf('Raspbian') !== -1) {
+    OSName = (/aarch64|arm64/i.test(ua) || /aarch64/.test(platform)) ? 'Raspberry Pi 64' : 'Raspberry Pi';
+  }
+  // Fallback: platform often reports "Linux armv7l" or "Linux aarch64" on Pi even when UA is minimal
+  if (OSName === 'Unknown OS' && /armv[67]l|aarch64/.test(platform)) {
+    OSName = /aarch64/.test(platform) ? 'Raspberry Pi 64' : 'Raspberry Pi';
   }
 
   let os = OSName.toLowerCase().replace(/\s+/g, '-');
 
-  document.querySelectorAll('.detect-os').forEach((entry) => {
-    cls = '.' + os;
-    var target = entry.querySelector(cls);
-    if (target) {
-      var all = entry.querySelectorAll('.os');
-      all.forEach((one) => {
-        one.classList.add('hide');
-      });
-      target.classList.remove('hide');
-    }
-  });
+  function applyDetectedOS(selectedOs) {
+    document.querySelectorAll('.detect-os').forEach((entry) => {
+      var target = entry.querySelector('.' + selectedOs);
+      if (target) {
+        var all = entry.querySelectorAll('.os');
+        all.forEach((one) => {
+          one.classList.add('hide');
+        });
+        target.classList.remove('hide');
+      }
+    });
+  }
+  applyDetectedOS(os);
+
+  // Mac: try to distinguish ARM vs Intel via User-Agent Client Hints (Chrome/Edge)
+  if (os === 'macos-arm' && navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === 'function') {
+    navigator.userAgentData.getHighEntropyValues(['architecture']).then(function (hints) {
+      if (hints.architecture === 'x86') {
+        applyDetectedOS('macos-intel');
+      }
+    }).catch(function () {});
+  }
 
   return os;
 }
