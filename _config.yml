@@ -75,7 +75,7 @@ social:
 # Download Links
 download:
   app:
-    macos: "https://download.diode.io/downloads/collab/dDrive-1.18.21.dmg"
+    macos: "https://download.diode.io/downloads/collab/dDrive-1.18.13.dmg"
     macos-checksum:
     windows: "https://download.diode.io/downloads/collab/dDrive-1.18.21.exe"
     windows-checksum:
