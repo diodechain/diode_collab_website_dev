@@ -557,38 +557,28 @@ function initOS() {
   var ua = navigator.userAgent;
   var platform = (navigator.platform || '').toLowerCase();
 
-  if (ua.indexOf('Win') !== -1) {
-    OSName = 'Windows';
-  }
-  if (ua.indexOf('Mac') !== -1 && ua.indexOf('iPhone') === -1 && ua.indexOf('iPad') === -1) {
-    OSName = 'MacOS ARM'; // default; may be corrected to MacOS Intel via userAgentData below
-  }
-  if (ua.indexOf('iPod') !== -1) {
-    OSName = "iOS";
-  }
-  if (ua.indexOf('iPad') !== -1) {
-    OSName = "iOS";
-  }
-  if (ua.indexOf('iPhone') !== -1) {
-    OSName = "iOS";
-  }
-  if (ua.indexOf('Android') !== -1) {
-    OSName = 'Android';
-  }
-  // Raspberry Pi / Linux ARM: use userAgent and navigator.platform (e.g. "Linux armv7l", "Linux aarch64")
-  var isArm = ua.indexOf('arm') !== -1 || ua.indexOf('aarch64') !== -1 || /aarch64|armv[67]l|arm64/i.test(ua) ||
-    /armv[67]l|aarch64/.test(platform);
-  if (ua.indexOf('Linux') !== -1 && isArm) {
-    OSName = (/aarch64|arm64/i.test(ua) || /aarch64/.test(platform)) ? 'Raspberry Pi 64' : 'Raspberry Pi';
-  } else if (ua.indexOf('Linux') !== -1) {
-    OSName = 'Linux';
+  // Raspberry Pi first: Chromium 113+ on Pi often spoofs UA to "Linux x86_64", but navigator.platform
+  // still reports "Linux armv7l" or "Linux aarch64". Trust platform for ARM so Pi is never mis-detected as Mac/Linux x86.
+  if (/armv[67]l|aarch64/.test(platform)) {
+    OSName = /aarch64/.test(platform) ? 'Raspberry Pi 64' : 'Raspberry Pi';
   }
   if (ua.indexOf('Raspberry') !== -1 || ua.indexOf('Raspbian') !== -1) {
     OSName = (/aarch64|arm64/i.test(ua) || /aarch64/.test(platform)) ? 'Raspberry Pi 64' : 'Raspberry Pi';
   }
-  // Fallback: platform often reports "Linux armv7l" or "Linux aarch64" on Pi even when UA is minimal
-  if (OSName === 'Unknown OS' && /armv[67]l|aarch64/.test(platform)) {
-    OSName = /aarch64/.test(platform) ? 'Raspberry Pi 64' : 'Raspberry Pi';
+
+  if (OSName !== 'Unknown OS') {
+    // Already identified as Raspberry Pi; skip other OS checks
+  } else if (ua.indexOf('Win') !== -1) {
+    OSName = 'Windows';
+  } else if (ua.indexOf('Mac') !== -1 && ua.indexOf('iPhone') === -1 && ua.indexOf('iPad') === -1) {
+    OSName = 'MacOS ARM'; // default; may be corrected to MacOS Intel via userAgentData below
+  } else if (ua.indexOf('iPod') !== -1 || ua.indexOf('iPad') !== -1 || ua.indexOf('iPhone') !== -1) {
+    OSName = "iOS";
+  } else if (ua.indexOf('Android') !== -1) {
+    OSName = 'Android';
+  } else if (ua.indexOf('Linux') !== -1) {
+    var isArm = ua.indexOf('arm') !== -1 || ua.indexOf('aarch64') !== -1 || /aarch64|armv[67]l|arm64/i.test(ua);
+    OSName = (/aarch64|arm64/i.test(ua)) ? 'Raspberry Pi 64' : (isArm ? 'Raspberry Pi' : 'Linux');
   }
 
   let os = OSName.toLowerCase().replace(/\s+/g, '-');
