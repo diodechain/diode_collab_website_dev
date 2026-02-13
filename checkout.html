@@ -1,0 +1,73 @@
+---
+title: Checkout
+layout: page
+class: header--dark
+permalink: /checkout/
+
+### Hero
+hero:
+  class: hero--rightthanks
+  subheading: 'Checkout'
+  image: hero/download.webp
+---
+
+{%- include hero.liquid -%}
+
+<section class="thanks" id="checkout-result">
+  <div id="checkout-content">
+    <p class="thanks__title--small">Loading...</p>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Parse hash: #/drive/{name}/?success={action}
+  // Example: #/drive/MyZone/?success=success or #/drive/MyZone/?success=cancel
+  function parseCheckoutHash() {
+    var hash = window.location.hash.slice(1) || '';
+    var pathMatch = hash.match(/\/drive\/([^/]+)/);
+    var name = pathMatch ? decodeURIComponent(pathMatch[1]) : '';
+    var searchStart = hash.indexOf('?');
+    var params = new URLSearchParams(searchStart >= 0 ? hash.slice(searchStart) : '');
+    var action = params.get('success') || 'cancel';
+    return { name: name, action: action };
+  }
+
+  function renderCheckoutContent() {
+    var data = parseCheckoutHash();
+    var container = document.getElementById('checkout-content');
+    if (!container) return;
+
+    if (data.action === 'success') {
+      var displayName = data.name || 'your Zone';
+      var buttonHtml = data.name
+        ? '<br><a href="ddrive://checkout_done/' + encodeURIComponent(data.name) + '" class="btn btn-primary">Open Diode</a>'
+        : '';
+      container.innerHTML = '<h3 class="thanks__title">Your Zone "' + escapeHtml(displayName) + '" is now upgraded!</h3>' +
+        '<p class="thanks__title--small">Switch back to the Diode Collab application to check it out.</p>' +
+        buttonHtml;
+    } else {
+      container.innerHTML = '<h3 class="thanks__title">Checkout cancelled</h3>' +
+        '<p class="thanks__title--small">The checkout was cancelled. Return to the Diode Collab app to retry.</p>';
+    }
+  }
+
+  function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Update hero subheading based on action
+  function updateHeroSubheading() {
+    var data = parseCheckoutHash();
+    var subheading = document.querySelector('.hero__subheading');
+    if (subheading) {
+      subheading.textContent = data.action === 'success' ? 'Thank you for your purchase!' : 'Checkout cancelled';
+    }
+  }
+
+  renderCheckoutContent();
+  updateHeroSubheading();
+})();
+</script>
