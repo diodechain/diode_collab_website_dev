@@ -552,6 +552,18 @@ function initScroll() {
   });
 }
 
+function versionGreaterThan(versionA, versionB) {
+  var a = (versionA || '0').toString().split('.').map(function (n) { return parseInt(n, 10) || 0; });
+  var b = (versionB || '0').toString().split('.').map(function (n) { return parseInt(n, 10) || 0; });
+  for (var i = 0; i < Math.max(a.length, b.length); i++) {
+    var na = a[i] || 0;
+    var nb = b[i] || 0;
+    if (na > nb) return true;
+    if (na < nb) return false;
+  }
+  return false;
+}
+
 function initOS() {
   let OSName = 'Unknown OS';
   var ua = navigator.userAgent;
@@ -571,7 +583,7 @@ function initOS() {
   } else if (ua.indexOf('Win') !== -1) {
     OSName = 'Windows';
   } else if (ua.indexOf('Mac') !== -1 && ua.indexOf('iPhone') === -1 && ua.indexOf('iPad') === -1) {
-    OSName = 'MacOS ARM'; // default; may be corrected to MacOS Intel via userAgentData below
+    OSName = 'MacOS Legacy'; // default for Safari/Firefox; Chromium may switch to macos-arm if CPU is ARM
   } else if (ua.indexOf('iPod') !== -1 || ua.indexOf('iPad') !== -1 || ua.indexOf('iPhone') !== -1) {
     OSName = "iOS";
   } else if (ua.indexOf('Android') !== -1) {
@@ -597,14 +609,22 @@ function initOS() {
   }
   applyDetectedOS(os);
 
-  // User-Agent Client Hints: fixes spoofed UAs (e.g. Chromium on Pi reports CrOS x86_64 but hints give real arch)
+  // User-Agent Client Hints (Chromium only): fix spoofed UAs and choose correct Mac build
   if (navigator.userAgentData && typeof navigator.userAgentData.getHighEntropyValues === 'function') {
-    navigator.userAgentData.getHighEntropyValues(['architecture', 'bitness', 'platform']).then(function (hints) {
-      if (String(hints.platform || '').toLowerCase() === 'linux' && String(hints.architecture || '').toLowerCase() === 'arm') {
-        // Bitness is unreliable on Pi (32-bit OS often reports "64"). Default to 32-bit so 32-bit Pi get the right button; 64-bit users can pick from "Or choose another Platform".
+    navigator.userAgentData.getHighEntropyValues(['architecture', 'bitness', 'platform', 'platformVersion']).then(function (hints) {
+      var plat = String(hints.platform || '').toLowerCase();
+      var arch = String(hints.architecture || '').toLowerCase();
+      var pv = String(hints.platformVersion || '0');
+      if (plat === 'linux' && arch === 'arm') {
         applyDetectedOS('raspberry-pi');
-      } else if (os === 'macos-arm' && hints.architecture === 'x86') {
-        applyDetectedOS('macos-intel');
+      } else if ((plat === 'mac' || plat === 'macos') && arch === 'arm') {
+        applyDetectedOS('macos-arm');
+      } else if ((plat === 'mac' || plat === 'macos') && arch === 'x86') {
+        // Intel Mac on Chromium: use macos-intel if OS version is high enough (e.g. Tahoe 26+); else legacy
+        if (versionGreaterThan(pv, '30.0.0')) {
+          applyDetectedOS('macos-intel');
+        }
+        // else stay on macos-legacy (already set by sync)
       }
     }).catch(function () {});
   }
