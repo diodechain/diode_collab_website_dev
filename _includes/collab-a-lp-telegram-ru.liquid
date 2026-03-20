@@ -1,0 +1,155 @@
+{%- assign hero = page.collab_a_hero | default: page.hero -%}
+{%- assign nav_links = page.collab_a_nav | default: site.collab_a_nav | default: nil -%}
+{%- assign footer = page.collab_a_footer | default: site.collab_a_footer | default: nil -%}
+
+<div class="collab-a-bg" aria-hidden="true">
+  <img src="{{ 'home/diode-mesh.png' | prepend: site.path.images | relative_url }}" alt="" class="diode-mesh" />
+</div>
+
+<div class="collab-a-row1">
+  <div class="collab-a-col-left">
+    <object data="{{ 'home/phone-outline.svg' | prepend: site.path.images | relative_url }}" class="collab-a-graphic2" type="image/svg+xml" aria-hidden="true"></object>
+    <div class="collab-a-line-top"></div>
+    <img src="{{ 'home/in-phone-recording.gif' | prepend: site.path.images | relative_url }}" alt="" class="collab-a-img collab-a-mobile-chat" />
+  </div>
+
+  <div class="collab-a-col-right">
+    <h1 class="collab-a-title">{{ hero.heading | default: "Альтернатива Telegram, которую невозможно заблокировать." }}</h1>
+    <div class="collab-a-subtitle">
+      {{ hero.subheading | default: "**Сообщения. Файлы. VPN.**
+
+Одноранговая зашифрованная связь. Без центрального сервера. Без номера телефона." | markdownify }}
+    </div>
+    <a href="{{ hero.btn_url | default: '#download-app' }}" class="collab-a-btn-download lp-hero-btn popup-open">{{ hero.btn_download | default: "СКАЧАТЬ" }}</a>
+    <div class="collab-a-line"></div>
+    <div class="collab-a-store-badges">
+      <a href="{{ site.download.app.android }}" target="_blank" rel="noopener"><img src="{{ 'home/playstore-badge.png' | prepend: site.path.images | relative_url }}" alt="Загрузить в Google Play" class="collab-a-img collab-a-playstore-badge" /></a>
+      <a href="{{ site.download.app.ios }}" target="_blank" rel="noopener"><img src="{{ 'home/appstore-badge.png' | prepend: site.path.images | relative_url }}" alt="Загрузить в App Store" class="collab-a-img collab-a-appstore-badge" /></a>
+    </div>
+  </div>
+</div>
+
+<div class="lp-sections">
+
+  <!-- Three pillars -->
+  <div class="lp-pillars">
+    <div class="lp-pillars-inner">
+      <div class="lp-pillar">
+        <div class="lp-pillar-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="10" width="8" height="6" rx="2" stroke="#f15d2f" stroke-width="1.5"/>
+            <rect x="20" y="10" width="8" height="6" rx="2" stroke="#f15d2f" stroke-width="1.5"/>
+            <rect x="12" y="20" width="8" height="6" rx="2" stroke="#f15d2f" stroke-width="1.5"/>
+            <path d="M8 16V19H16M24 16V19H16M16 19V20" stroke="#f15d2f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="lp-pillar-title">Без центрального сервера</h3>
+        <p class="lp-pillar-text">Telegram работает через центральные серверы — именно поэтому его можно заблокировать. Diode работает по принципу p2p: сообщения передаются напрямую между устройствами, без единой точки отказа.</p>
+      </div>
+      <div class="lp-pillar">
+        <div class="lp-pillar-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 3L4 8V16C4 22.627 9.373 28 16 28C22.627 28 28 22.627 28 16V8L16 3Z" stroke="#f15d2f" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M11 16L14 19L21 13" stroke="#f15d2f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="lp-pillar-title">Защита личных данных</h3>
+        <p class="lp-pillar-text">Никакого номера телефона. Никакой электронной почты. Никаких личных данных. Ваша личность хранится только на вашем устройстве — никогда на сервере.</p>
+      </div>
+      <div class="lp-pillar">
+        <div class="lp-pillar-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="14" width="14" height="12" rx="2" stroke="#f15d2f" stroke-width="1.5"/>
+            <path d="M11 14V11C11 8.791 13.239 7 16 7C18.761 7 21 8.791 21 11V14" stroke="#f15d2f" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="16" cy="20" r="1.5" fill="#f15d2f"/>
+          </svg>
+        </div>
+        <h3 class="lp-pillar-title">Сквозное шифрование</h3>
+        <p class="lp-pillar-text">Каждое сообщение, файл и видео шифруются до отправки с вашего устройства. Даже Diode не может прочитать ваши сообщения. Соответствует стандартам ISO 27001 и SOC-2.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison -->
+  <div class="lp-comparison">
+    <div class="lp-inner">
+      <h2 class="lp-section-heading">Почему Telegram блокируют.<br>И почему Diode — нет.</h2>
+      <p class="lp-section-sub">Разница не в политике — в архитектуре. Telegram передаёт сообщения через центральные серверы, что создаёт единую точку, которую можно заблокировать или замедлить. Diode передаёт сообщения напрямую между устройствами вашей команды.</p>
+      <div class="lp-compare-grid">
+        <div class="lp-compare-col lp-compare-them">
+          <div class="lp-compare-label">Telegram</div>
+          <ul class="lp-compare-list">
+            <li class="lp-compare-bad">Сообщения проходят через центральные серверы — одна блокировка отключает всех</li>
+            <li class="lp-compare-bad">Для регистрации требуется номер телефона</li>
+            <li class="lp-compare-bad">Метаданные о том, с кем и когда вы общаетесь, хранятся централизованно</li>
+            <li class="lp-compare-bad">Обычные чаты по умолчанию не имеют сквозного шифрования</li>
+          </ul>
+        </div>
+        <div class="lp-compare-col lp-compare-us">
+          <div class="lp-compare-label lp-compare-label-us">Diode Collab</div>
+          <ul class="lp-compare-list">
+            <li class="lp-compare-good">P2P: сообщения идут напрямую между устройствами — нет сервера для блокировки</li>
+            <li class="lp-compare-good">Не нужен номер телефона или личные данные</li>
+            <li class="lp-compare-good">Метаданные не хранятся — даже Diode не знает, с кем вы общаетесь</li>
+            <li class="lp-compare-good">Все сообщения всегда шифруются сквозным шифрованием</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Use cases -->
+  <div class="lp-usecases">
+    <div class="lp-inner">
+      <h2 class="lp-section-heading">Создан для команд, которым нужна надёжная связь.</h2>
+      <div class="lp-usecase-grid">
+        <div class="lp-usecase-card">
+          <h4>Команды в регионах с ограниченным доступом</h4>
+          <p>Когда централизованные сервисы блокируются, p2p продолжает работать. Нет центрального сервера — нет единой точки отказа для связи вашей команды.</p>
+        </div>
+        <div class="lp-usecase-card">
+          <h4>НКО и миссионерские команды</h4>
+          <p>Защитите ваших людей и их контакты в чувствительных регионах. Номер телефона, email и IP-адрес не хранятся — даже метаданные.</p>
+        </div>
+        <div class="lp-usecase-card">
+          <h4>Безопасный обмен файлами и видео</h4>
+          <p>Передавайте файлы и видео напрямую между участниками — без загрузки в облако, без вложений в email, без сторонних серверов.</p>
+        </div>
+        <div class="lp-usecase-card">
+          <h4>Юридические и исполнительные команды</h4>
+          <p>Шифруйте и контролируйте конфиденциальные коммуникации, не полагаясь на сервисы, которые подвергают вашу команду рискам утечки данных.</p>
+        </div>
+        <div class="lp-usecase-card">
+          <h4>Распределённые и удалённые команды</h4>
+          <p>Встроенный VPN позволяет вашей команде безопасно подключаться из любой точки мира без контакта с публичным интернетом.</p>
+        </div>
+        <div class="lp-usecase-card">
+          <h4>Журналисты и исследователи</h4>
+          <p>Нет центральной базы данных — нет агрегированной цели. Коммуникации остаются только между вами и вашими источниками.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="lp-cta">
+    <h2 class="lp-cta-heading">Скачайте Diode Collab. Личные данные не требуются.</h2>
+    <p class="lp-cta-sub">Доступно на всех основных платформах. Создайте первую приватную Зону менее чем за две минуты.</p>
+    <p class="lp-cta-proof">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="8" cy="8" r="7" stroke="#f15d2f" stroke-width="1"/>
+        <path d="M5 8L7 10L11 6" stroke="#f15d2f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Более 1 000 приватных Зон по всему миру
+    </p>
+    <a href="#download-app" class="collab-a-btn-download lp-cta-btn popup-open">СКАЧАТЬ</a>
+    <div class="lp-cta-badges">
+      <a href="{{ site.download.app.android }}" target="_blank" rel="noopener"><img src="{{ 'home/playstore-badge.png' | prepend: site.path.images | relative_url }}" alt="Загрузить в Google Play" class="collab-a-img collab-a-playstore-badge" /></a>
+      <a href="{{ site.download.app.ios }}" target="_blank" rel="noopener"><img src="{{ 'home/appstore-badge.png' | prepend: site.path.images | relative_url }}" alt="Загрузить в App Store" class="collab-a-img collab-a-appstore-badge" /></a>
+    </div>
+    <p class="lp-cta-note">Email и номер телефона не нужны. Ваша личность хранится только на вашем устройстве.</p>
+  </div>
+
+</div>
+
+{%- include parts/collab-a-footer.liquid nav_links=nav_links footer=footer -%}
