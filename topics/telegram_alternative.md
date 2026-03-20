@@ -1,6 +1,6 @@
 ---
 title: Telegram Alternative — Diode Collab
-description: "The Telegram alternative with no central server. Peer-to-peer encrypted messaging that can't be blocked. No phone number required. Free download."
+description: "Diode Collab is a Telegram alternative built on peer-to-peer architecture. No central server to block. End-to-end encrypted. No phone number required."
 layout: page-collab-a
 permalink: /telegram-alternative/
 

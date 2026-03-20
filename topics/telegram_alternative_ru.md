@@ -1,6 +1,6 @@
 ---
 title: Альтернатива Telegram — Diode Collab
-description: "Альтернатива Telegram без центрального сервера. Одноранговые зашифрованные сообщения, которые невозможно заблокировать. Номер телефона не нужен."
+description: "Diode Collab — альтернатива Telegram на основе p2p-архитектуры. Без центрального сервера. Сквозное шифрование. Номер телефона не нужен."
 layout: page-collab-a
 permalink: /alternativa-telegram/
 
