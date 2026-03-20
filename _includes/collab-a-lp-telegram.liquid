@@ -14,11 +14,11 @@
   </div>
 
   <div class="collab-a-col-right">
-    <h1 class="collab-a-title">{{ hero.heading | default: "The Telegram Alternative That Can't Be Shut Down." }}</h1>
+    <h1 class="collab-a-title">{{ hero.heading | default: "The Telegram Alternative With No Server to Block." }}</h1>
     <div class="collab-a-subtitle">
-      {{ hero.subheading | default: "**Messaging. Files. VPN.**
+      {{ hero.subheading | default: "**Messaging. Files. Web3 Tunnels.**
 
-Peer-to-peer encrypted messaging. No central server to block. No phone number required." | markdownify }}
+Peer-to-peer encrypted messaging. No central server to target. No phone number required." | markdownify }}
     </div>
     <a href="{{ hero.btn_url | default: '#download-app' }}" class="collab-a-btn-download lp-hero-btn popup-open">{{ hero.btn_download | default: "DOWNLOAD" }}</a>
     <div class="collab-a-line"></div>
@@ -44,7 +44,7 @@ Peer-to-peer encrypted messaging. No central server to block. No phone number re
           </svg>
         </div>
         <h3 class="lp-pillar-title">No Central Server</h3>
-        <p class="lp-pillar-text">Any centralized service has a single point of failure. Block the server and everyone goes dark. Diode routes directly between devices — there's no server to cut off.</p>
+        <p class="lp-pillar-text">Any centralized service has a single point of failure. Block the server and everyone goes dark. Diode routes directly between devices, so there is no server to target.</p>
       </div>
       <div class="lp-pillar">
         <div class="lp-pillar-icon">
@@ -54,7 +54,7 @@ Peer-to-peer encrypted messaging. No central server to block. No phone number re
           </svg>
         </div>
         <h3 class="lp-pillar-title">Protected Identities</h3>
-        <p class="lp-pillar-text">No phone number. No email address. No personal information of any kind. Your identity is self-custody — stored only on your device, never on a server.</p>
+        <p class="lp-pillar-text">No phone number. No email address. No personal information of any kind. Your identity is self-custody, stored only on your device, never on a server.</p>
       </div>
       <div class="lp-pillar">
         <div class="lp-pillar-icon">
@@ -74,27 +74,35 @@ Peer-to-peer encrypted messaging. No central server to block. No phone number re
   <div class="lp-comparison">
     <div class="lp-inner">
       <h2 class="lp-section-heading">What makes Diode a better Telegram alternative.</h2>
-      <p class="lp-section-sub">The difference isn't just policy — it's architecture. Telegram routes messages through central servers, which creates a single point that can be blocked, throttled, or shut down. Diode routes messages directly between your team's devices.</p>
+      <p class="lp-section-sub">The difference is architectural. Telegram routes messages through central servers, which creates a single point that can be blocked, throttled, or shut down by anyone who controls the network. Diode routes messages directly between your team's devices.</p>
       <div class="lp-compare-grid">
         <div class="lp-compare-col lp-compare-them">
           <div class="lp-compare-label">Telegram</div>
           <ul class="lp-compare-list">
-            <li class="lp-compare-bad">Messages route through central servers — one disruption cuts everyone off</li>
+            <li class="lp-compare-bad">Messages route through central servers, creating a single point of disruption</li>
             <li class="lp-compare-bad">Requires a phone number to register</li>
             <li class="lp-compare-bad">Metadata about who you talk to and when is stored centrally</li>
-            <li class="lp-compare-bad">Regular chats are not end-to-end encrypted by default</li>
+            <li class="lp-compare-bad">Regular chats are not end-to-end encrypted (Secret Chats are, but only on mobile, one-to-one, and off by default)</li>
           </ul>
         </div>
         <div class="lp-compare-col lp-compare-us">
           <div class="lp-compare-label lp-compare-label-us">Diode Collab</div>
           <ul class="lp-compare-list">
-            <li class="lp-compare-good">Peer-to-peer: messages travel directly between devices — no server to disrupt</li>
+            <li class="lp-compare-good">Peer-to-peer: messages travel directly between devices with no server to target</li>
             <li class="lp-compare-good">No phone number or personal information required</li>
-            <li class="lp-compare-good">No metadata stored — not even Diode knows who you talk to</li>
-            <li class="lp-compare-good">All messages end-to-end encrypted by default, always</li>
+            <li class="lp-compare-good">No metadata stored. Not even Diode knows who you talk to</li>
+            <li class="lp-compare-good">All messages end-to-end encrypted by default, always, including group chats</li>
           </ul>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Web3 tunnels vs VPN -->
+  <div class="lp-usecases" style="padding-bottom: 0;">
+    <div class="lp-inner">
+      <h2 class="lp-section-heading">Web3 tunnels, not traditional VPNs.</h2>
+      <p class="lp-section-sub" style="max-width: 720px;">A traditional VPN routes your traffic through a known server at a known IP address. That makes it straightforward to identify and block. Hundreds of VPN services have been blocked this way. Diode uses Web3 tunnels: traffic is routed through a decentralized network of independent nodes with no fixed endpoint to target. There is no single server, no single IP, and no central provider that can be pressured to shut it down.</p>
     </div>
   </div>
 
@@ -105,15 +113,15 @@ Peer-to-peer encrypted messaging. No central server to block. No phone number re
       <div class="lp-usecase-grid">
         <div class="lp-usecase-card">
           <h4>Teams in Restricted Regions</h4>
-          <p>When a centralized service goes down, your team stays up. Peer-to-peer means there's no single point of failure — communication continues between devices directly.</p>
+          <p>When a centralized service is blocked or throttled, your team stays up. Peer-to-peer means there is no single point of failure, and Web3 tunnels resist the filtering techniques used to block traditional VPNs.</p>
         </div>
         <div class="lp-usecase-card">
           <h4>NGOs &amp; Mission Teams</h4>
-          <p>Protect your people and their contacts in sensitive environments. No phone number, email, or IP address is stored — not even metadata.</p>
+          <p>Protect your people and their contacts in sensitive environments. No phone number, email, or IP address is stored. Not even metadata.</p>
         </div>
         <div class="lp-usecase-card">
           <h4>Secure File &amp; Video Sharing</h4>
-          <p>Share files and large videos directly between parties — no cloud uploads, no email attachments, no third-party server in the middle.</p>
+          <p>Share files and large videos directly between parties. No cloud uploads, no email attachments, no third-party server in the middle.</p>
         </div>
         <div class="lp-usecase-card">
           <h4>Legal &amp; Executive Teams</h4>
@@ -121,11 +129,11 @@ Peer-to-peer encrypted messaging. No central server to block. No phone number re
         </div>
         <div class="lp-usecase-card">
           <h4>Remote &amp; Distributed Teams</h4>
-          <p>Built-in VPN means your team connects securely from anywhere. Devices on the same network direct-connect without touching the public internet.</p>
+          <p>Built-in Web3 tunnels mean your team connects securely from anywhere. Devices on the same network direct-connect without touching the public internet.</p>
         </div>
         <div class="lp-usecase-card">
           <h4>Journalists &amp; Researchers</h4>
-          <p>No central database means no aggregate target. Communications stay between you and your sources — no vendor in the middle.</p>
+          <p>No central database means no aggregate target. Communications stay between you and your sources, with no vendor in the middle.</p>
         </div>
       </div>
     </div>
@@ -151,5 +159,6 @@ Peer-to-peer encrypted messaging. No central server to block. No phone number re
   </div>
 
 </div>
+
 
 {%- include parts/collab-a-footer.liquid nav_links=nav_links footer=footer -%}

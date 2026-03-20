@@ -7,6 +7,14 @@
     <!-- SEO -->
     {%- seo -%}
 
+    <!-- Hreflang for multilingual pages -->
+    {%- if page.hreflang_alt -%}
+    <link rel="alternate" hreflang="{{ page.lang | default: 'en' }}" href="{{ page.url | absolute_url }}" />
+    {%- for alt in page.hreflang_alt -%}
+    <link rel="alternate" hreflang="{{ alt[0] }}" href="{{ alt[1] | absolute_url }}" />
+    {%- endfor -%}
+    {%- endif -%}
+
     <!-- Stylesheet -->
     <link href="{{ "style.css" | prepend: site.path.styles | relative_url }}" rel="stylesheet">
     {%- if page.layout == 'page-collab-a' -%}
